@@ -1,0 +1,56 @@
+ServerEvents.entityLootTables(event => {
+    event.modifyEntity("hordes:drowned_player", Loot => {
+        Loot.addPool(pool => {
+            pool.killedByPlayer()
+            pool.addItem("copper_ingot").weight(300)
+            pool.addItem("coal").weight(200)
+            pool.addItem("iron_ingot").weight(150)
+            pool.addItem("gold_ingot").weight(100)
+            pool.addItem("diamond").weight(50)
+            pool.addItem("emerald").weight(10)
+            pool.addItem("netherite_scrap").weight(1)
+            pool.addEmpty(189)
+        })
+        Loot.addPool(pool => {
+            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
+            pool.addItem("apocalypsenow:money_block").weight(10)
+            pool.addEmpty(390)
+        })
+    })
+    event.modifyEntity("hordes:husk_player", Loot => {
+        Loot.addPool(pool => {
+            pool.killedByPlayer()
+            pool.addItem("copper_ingot").weight(300)
+            pool.addItem("coal").weight(200)
+            pool.addItem("iron_ingot").weight(150)
+            pool.addItem("gold_ingot").weight(100)
+            pool.addItem("diamond").weight(50)
+            pool.addItem("emerald").weight(10)
+            pool.addItem("netherite_scrap").weight(1)
+            pool.addEmpty(189)
+        })
+        Loot.addPool(pool => {
+            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
+            pool.addItem("apocalypsenow:money_block").weight(10)
+            pool.addEmpty(390)
+        })
+    })
+    event.modifyEntity("hordes:zombie_player", Loot => {
+        Loot.addPool(pool => {
+            pool.killedByPlayer()
+            pool.addItem("copper_ingot").weight(300)
+            pool.addItem("coal").weight(200)
+            pool.addItem("iron_ingot").weight(150)
+            pool.addItem("gold_ingot").weight(100)
+            pool.addItem("diamond").weight(50)
+            pool.addItem("emerald").weight(10)
+            pool.addItem("netherite_scrap").weight(1)
+            pool.addEmpty(189)
+        })
+        Loot.addPool(pool => {
+            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
+            pool.addItem("apocalypsenow:money_block").weight(10)
+            pool.addEmpty(390)
+        })
+    })
+})
