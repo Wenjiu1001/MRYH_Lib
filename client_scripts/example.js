@@ -1,24 +1,24 @@
-let   让 $RenderSystem = Java.loadClass("com.mojang.blaze3d.systems.RenderSystem")
-let   让 $Color = Java.loadClass("java.awt.Color")
+let $RenderSystem = Java.loadClass("com.mojang.blaze3d.systems.RenderSystem")
+let $Color = Java.loadClass("java.awt.Color")
 
-function   函数 rgbaColor(R, G, B, A) {
-    return   返回 new   新 $Color   美元的颜色(R / 255, G / 255, B / 255, A / 100).getRGB();
+function rgbaColor(R, G, B, A) {
+    return new $Color(R / 255, G / 255, B / 255, A / 100).getRGB();
 }
 
-let   让 bleedcount = 0;
-let   让 infectioncount = 0
+let bleedcount = 0;
+let infectioncount = 0
 
-NetworkEvents.dataReceived('mryh:infectioncount', event   事件 => {
-    const   常量 data = event.data   数据;
+NetworkEvents.dataReceived('mryh:infectioncount', event => {
+    const data = event.data;
     infectioncount = data.getInt('infectioncount');
 });
 
-NetworkEvents.dataReceived('mryh:bleedcount'   “mryh: bleedcount”, event   事件 => {
-    const   常量 data = event.data   数据;
-    bleedcount = data.getInt('bleedcount'   “bleedcount”);
+NetworkEvents.dataReceived('mryh:bleedcount', event => {
+    const data = event.data;
+    bleedcount = data.getInt('bleedcount');
 });
 /*
-RenderJSEvents.AddGuiRender(e => {RenderJSEvents。AddGuiRender（e => {）
+RenderJSEvents.AddGuiRender(e => {
     e.addRender(c => {
         var x = c.window.guiScaledWidth / 8;
         var y = c.window.guiScaledHeight / 9.5;
@@ -30,7 +30,7 @@ RenderJSEvents.AddGuiRender(e => {RenderJSEvents。AddGuiRender（e => {）
         } else {
             displayinfection = "已感染";
         }
-        c.guiGraphics['drawString(net.minecraft.client.gui.Font,java.lang.String,float,float,int,boolean)'](c.guiGraphics['拉带(net.minecraft.client.gui.Font、以浮动、浮点数、整数、boolean)”)(
+        c.guiGraphics['drawString(net.minecraft.client.gui.Font,java.lang.String,float,float,int,boolean)'](
             Client.font, displayinfection, // 字体与渲染字符
             x, y, // 渲染位置
             rgbaColor(255, 0, 255, 50), // RGBA
@@ -48,7 +48,7 @@ RenderJSEvents.AddGuiRender(e => {RenderJSEvents。AddGuiRender（e => {）
         } else {
             displaybleed = "已严重流血";
         }
-        c.guiGraphics['drawString(net.minecraft.client.gui.Font,java.lang.String,float,float,int,boolean)'](c.guiGraphics['拉带(net.minecraft.client.gui.Font、以浮动、浮点数、整数、boolean)”)(
+        c.guiGraphics['drawString(net.minecraft.client.gui.Font,java.lang.String,float,float,int,boolean)'](
             Client.font, displaybleed, // 字体与渲染字符
             x, y, // 渲染位置
             rgbaColor(255, 0, 255, 50), // RGBA
