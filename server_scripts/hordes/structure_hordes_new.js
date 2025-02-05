@@ -3,7 +3,7 @@
  * 获取结构的ResourceKey
  * @param {Special.Structure} structureName  
  */
-function   函数 structureKey(structureName) { return   返回 $ResourceKey.create($Registries.STRUCTURE, structureName) }
+function structureKey(structureName) { return $ResourceKey.create($Registries.STRUCTURE, structureName) }
 
 /**
  * 检测坐标是否在结构内，如果在则返回true
@@ -11,10 +11,10 @@ function   函数 structureKey(structureName) { return   返回 $ResourceKey.cre
  * @param {$BlockPos$MutableBlockPos_} pos
  * @param {string} structureName
  */
-let   让 simpleCheckPosInStructure = (level, pos, structureName) =>
+let simpleCheckPosInStructure = (level, pos, structureName) =>
     !!level.structureManager().getStructureWithPieceAt(pos, structureKey(structureName)).getStructure()
 
-const   常量 hordeSpawnStructure = [
+const hordeSpawnStructure = [
     "modern_structures:boat",
     "modern_structures:bus",
     "modern_structures:cherryhouse",
@@ -353,4 +353,3 @@ PlayerEvents.tick(e => {
         }
     }
 });
-
