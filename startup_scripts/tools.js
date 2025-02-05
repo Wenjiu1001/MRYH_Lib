@@ -1,4 +1,4 @@
-function   函数 tryCatch(fun, args) {
+function tryCatch(fun, args) {
     try {
         // 尝试执行传入的函数fun，并传入参数args
         fun(args)
