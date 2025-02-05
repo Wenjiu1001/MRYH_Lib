@@ -12,7 +12,7 @@
     });
 });*/
 
-EntityEvents.hurt(event   事件 => {
+EntityEvents.hurt(event => {
     let enchantlevel = event.source.player.mainHandItem.getEnchantmentLevel("mryh:slowness_bullet")
     if (event.source.actual.isPlayer()) {
         if (event.source.player.mainHandItem.getEnchantmentLevel("mryh:slowness_bullet")) {
