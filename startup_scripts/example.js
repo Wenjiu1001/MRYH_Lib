@@ -102,27 +102,27 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', (even
                         new $AttributeModifier(
                             $UUid.randomUUID(),
                             'customAttribute_armor',
-                            attr.value   价值,
-                            attr.operation   操作
+                            attr.value,
+                            attr.operation
                         ));
                 }))
             }
-        } else   其他 {
+        } else {
             console.error(`未找到该自定义属性${nbt.mryh_attribute_armor_legs}`);
         }
     }
-    if   如果 (nbt != null && nbt.mryh_attribute_armor_head != undefined) {
-        let   让 custom_armor_head = customAttribute_armor[nbt.mryh_attribute_armor_head];
-        if   如果 (custom_armor_head != undefined) {
+    if (nbt != null && nbt.mryh_attribute_armor_head != undefined) {
+        let custom_armor_head = customAttribute_armor[nbt.mryh_attribute_armor_head];
+        if (custom_armor_head != undefined) {
             console.log('测试')
-            if   如果 (slotType == $EquipmentSlotType.HEAD   头) {
+            if (slotType == $EquipmentSlotType.HEAD) {
                 custom_armor_head.forEach((attr => {
                     event.addModifier(attr.attribute,
-                        new   新 $AttributeModifier(
+                        new $AttributeModifier(
                             $UUid.randomUUID(),
                             'customAttribute_armor',
-                            attr.value   价值,
-                            attr.operation   操作
+                            attr.value,
+                            attr.operation
                         ));
                 }))
             }
