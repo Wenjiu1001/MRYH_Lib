@@ -53,3 +53,29 @@ ItemEvents.tooltip(event => {
 "item.mryh.example.tooltip.alt": "Alt key tooltip text"
 "item.mryh.example.tooltip.shift": "Shift key tooltip text"
 */
+
+ItemEvents.tooltip((event) => {
+    // 监听所有物品的工具提示事件
+    event.addAdvancedToAll((item, advanced, tooltip) => {
+        // 获取物品的自定义属性tag
+        const attributenbt = item.nbt.getString('mryh_attribute');
+
+        // 检查物品是否具有特定的tag
+        if (attributenbt) {
+            // 根据tag的值添加相应的工具提示
+            switch (attributenbt) {
+                case 'strength':
+                    tooltip.add(Text.white('联盟等级： §2 稀有'));
+                    tooltip.add(Text.blue('来自民间工厂的产品'))
+                    tooltip.add(Text.yellow('攻击伤害: +2'))
+                    break;
+                case 'speed':
+                    tooltip.add(Text.white('联盟等级： §3 史诗'));
+                    tooltip.add(Text.blue('军工制品'))
+                    tooltip.add(Text.yellow('攻击伤害: +1'))
+                    tooltip.add(Text.yellow('攻击速度: +2'))
+                    break;
+            }
+        }
+    });
+});
