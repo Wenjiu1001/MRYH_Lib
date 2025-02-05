@@ -102,13 +102,3 @@ PlayerEvents.chat(e => {
     e.cancel();
 });
 
-PlayerEvents.chat(e => {
-    let message = e.message
-    let player = e.player
-    if (message == 'clear') {
-        player.persistentData.putInt('addedhealth', 0)
-        player.persistentData.putInt('addedattack', 0)
-        player.persistentData.putInt('addedarmor', 0)
-        player.persistentData.putInt('addedspeed', 0)
-    }
-})
