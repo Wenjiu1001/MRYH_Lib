@@ -8,12 +8,28 @@ let $EquipmentSlotType = Java.loadClass('net.minecraft.world.entity.EquipmentSlo
  */
 
 let customAttribute = {
-    'strength': [
-        { attribute: "minecraft:generic.attack_damage", value: 2, operation: "addition" }
+    'inferior': [
+        { attribute: "puffish_attributes:player.melee_damage", value: -1, operation: "addition" },
+        { attribute: "minecraft:generic.attack_speed", value: -0.1, operation: "multiply_base" }
     ],
-    'speed': [
-        { attribute: "minecraft:generic.attack_speed", value: 2, operation: "multiply_base" },
-        { attribute: "minecraft:generic.attack_damage", value: 1, operation: "addition" }
+    'common': [
+        { attribute: "puffish_attributes:player.melee_damage", value: 1, operation: "addition" }
+    ],
+    'rare': [
+        { attribute: "puffish_attributes:player.melee_damage", value: 1, operation: "addition" },
+        { attribute: "minecraft:generic.attack_speed", value: 0.1, operation: "addition" }
+    ],
+    'artifact': [
+        { attribute: "puffish_attributes:player.melee_damage", value: 2, operation: "addition" },
+        { attribute: "minecraft:generic.attack_speed", value: 0.1, operation: "multiply_base" }
+    ],
+    'legendary': [
+        { attribute: "puffish_attributes:player.melee_damage", value: 0.2, operation: "multiply_base" },
+        { attribute: "minecraft:generic.attack_speed", value: 0.2, operation: "multiply_base" }
+    ],
+    'epic': [
+        { attribute: "puffish_attributes:player.melee_damage", value: 0.3, operation: "multiply_base" },
+        { attribute: "minecraft:generic.attack_speed", value: 0.3, operation: "multiply_base" }
     ]
 };
 
@@ -22,11 +38,36 @@ let customAttribute = {
  */
 
 let customAttribute_armor = {
-    'durability': [
-        { attribute: "minecraft:generic.max_health", value: 10, operation: "addition" }
+    'inferior_armor': [
+        { attribute: "minecraft:generic.max_health", value: -2, operation: "addition" },
+        { attribute: "minecraft:generic.armor", value: -0.1, operation: "multiply_base" }
     ],
-    'defense': [
-        { attribute: "minecraft:generic.armor", value: 2, operation: "addition" }
+    'common_armor': [
+        { attribute: "minecraft:generic.max_health", value: 2, operation: "addition" },
+        { attribute: "minecraft:generic.armor", value: 1, operation: "addition" }
+    ],
+    'rare_armor': [
+        { attribute: "minecraft:generic.max_health", value: 2, operation: "addition" },
+        { attribute: "minecraft:generic.armor", value: 2, operation: "addition" },
+        { attribute: "minecraft:generic.armor_toughness", value: 0.1, operation: "multiply_base" }
+    ],
+    'artifact_armor': [
+        { attribute: "minecraft:generic.max_health", value: 2, operation: "addition" },
+        { attribute: "minecraft:generic.armor", value: 0.2, operation: "multiply_base" },
+        { attribute: "minecraft:generic.armor_toughness", value: 0.1, operation: "multiply_base" },
+        { attribute: "minecraft:generic.luck", value: 1, operation: "addition" }
+    ],
+    'legendary_armor': [
+        { attribute: "minecraft:generic.max_health", value: 2, operation: "addition" },
+        { attribute: "minecraft:generic.armor", value: 0.2, operation: "multiply_base" },
+        { attribute: "minecraft:generic.armor_toughness", value: 0.2, operation: "multiply_base" },
+        { attribute: "puffish_attributes:player.melee_damage", value: 4, operation: "addition" }
+    ],
+    'epic_armor': [
+        { attribute: "minecraft:generic.max_health", value: 0.2, operation: "multiply_base" },
+        { attribute: "minecraft:generic.armor", value: 0.2, operation: "multiply_base" },
+        { attribute: "minecraft:generic.armor_toughness", value: 0.2, operation: "multiply_base" },
+        { attribute: "puffish_attributes:player.melee_damage", value: 0.2, operation: "multiply_base" }
     ]
 };
 
@@ -38,12 +79,11 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', (even
     if (nbt != null && nbt.mryh_attribute != undefined) {
         let custom = customAttribute[nbt.mryh_attribute];
         if (custom != undefined) {
-            console.log('测试')
             if (slotType == $EquipmentSlotType.MAINHAND) {
                 custom.forEach((attr => {
                     event.addModifier(attr.attribute,
                         new $AttributeModifier(
-                            $UUid.randomUUID(),
+                            $UUid.nameUUIDFromBytes([127,0,0,0,1]),
                             'customAttribute',
                             attr.value,
                             attr.operation
@@ -62,7 +102,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', (even
                 custom_armor_feet.forEach((attr => {
                     event.addModifier(attr.attribute,
                         new $AttributeModifier(
-                            $UUid.randomUUID(),
+                            $UUid.nameUUIDFromBytes([127,0,0,0,2]),
                             'customAttribute_armor',
                             attr.value,
                             attr.operation
@@ -76,12 +116,11 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', (even
     if (nbt != null && nbt.mryh_attribute_armor_chest != undefined) {
         let custom_armor_chest = customAttribute_armor[nbt.mryh_attribute_armor_chest];
         if (custom_armor_chest != undefined) {
-            console.log('测试')
             if (slotType == $EquipmentSlotType.CHEST) {
                 custom_armor_chest.forEach((attr => {
                     event.addModifier(attr.attribute,
                         new $AttributeModifier(
-                            $UUid.randomUUID(),
+                            $UUid.nameUUIDFromBytes([127,0,0,0,3]),
                             'customAttribute_armor',
                             attr.value,
                             attr.operation
@@ -95,12 +134,11 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', (even
     if (nbt != null && nbt.mryh_attribute_armor_legs != undefined) {
         let custom_armor_legs = customAttribute_armor[nbt.mryh_attribute_armor_legs];
         if (custom_armor_legs != undefined) {
-            console.log('测试')
             if (slotType == $EquipmentSlotType.LEGS) {
                 custom_armor_legs.forEach((attr => {
                     event.addModifier(attr.attribute,
                         new $AttributeModifier(
-                            $UUid.randomUUID(),
+                            $UUid.nameUUIDFromBytes([127,0,0,0,4]),
                             'customAttribute_armor',
                             attr.value,
                             attr.operation
@@ -114,12 +152,11 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', (even
     if (nbt != null && nbt.mryh_attribute_armor_head != undefined) {
         let custom_armor_head = customAttribute_armor[nbt.mryh_attribute_armor_head];
         if (custom_armor_head != undefined) {
-            console.log('测试')
             if (slotType == $EquipmentSlotType.HEAD) {
                 custom_armor_head.forEach((attr => {
                     event.addModifier(attr.attribute,
                         new $AttributeModifier(
-                            $UUid.randomUUID(),
+                            $UUid.nameUUIDFromBytes([127,0,0,0,5]),
                             'customAttribute_armor',
                             attr.value,
                             attr.operation
