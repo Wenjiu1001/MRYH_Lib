@@ -24,11 +24,11 @@ let customAttribute = {
         { attribute: "minecraft:generic.attack_speed", value: 0.1, operation: "multiply_base" }
     ],
     'legendary': [
-        { attribute: "puffish_attributes:player.melee_damage", value: 0.2, operation: "multiply_base" },
+        { attribute: "puffish_attributes:player.melee_damage", value: 0.05, operation: "multiply_base" },
         { attribute: "minecraft:generic.attack_speed", value: 0.2, operation: "multiply_base" }
     ],
     'epic': [
-        { attribute: "puffish_attributes:player.melee_damage", value: 0.3, operation: "multiply_base" },
+        { attribute: "puffish_attributes:player.melee_damage", value: 0.1, operation: "multiply_base" },
         { attribute: "minecraft:generic.attack_speed", value: 0.3, operation: "multiply_base" }
     ]
 };
@@ -67,7 +67,7 @@ let customAttribute_armor = {
         { attribute: "minecraft:generic.max_health", value: 0.2, operation: "multiply_base" },
         { attribute: "minecraft:generic.armor", value: 0.2, operation: "multiply_base" },
         { attribute: "minecraft:generic.armor_toughness", value: 0.2, operation: "multiply_base" },
-        { attribute: "puffish_attributes:player.melee_damage", value: 0.2, operation: "multiply_base" }
+        { attribute: "puffish_attributes:player.melee_damage", value: 0.1, operation: "multiply_base" }
     ]
 };
 
