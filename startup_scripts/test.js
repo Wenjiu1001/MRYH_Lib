@@ -1,14 +1,3 @@
-/*
-let $AnvilUpdateEvent=Java.loadClass('net.minecraftforge.event.AnvilUpdateEvent')
-
-NativeEvents.onEvent($AnvilUpdateEvent,e=>{
-    let Left=e.left
-    let Right=e.right
-    e.output.nbt.putString()
-})
-*/
-
-
 
 let $AnvilUpdateEvent = Java.loadClass('net.minecraftforge.event.AnvilUpdateEvent');
 let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack');
@@ -40,99 +29,31 @@ function getRandomQuality() {
     }
     return QUALITY_PROBABILITIES[QUALITY_PROBABILITIES.length - 1].name; // 默认返回最后一个
 }
-/*
-// 监听AnvilUpdateEvent
+
 NativeEvents.onEvent($AnvilUpdateEvent, (e) => {
-    let leftItem = e.left;
-    let rightItem = e.right;
-    console.log('测试1')
-    // 检查是否使用了钻石
-    if (!rightItem.isEmpty() && rightItem.id == 'minecraft:diamond') {
-        console.log('测试2')
+    let item = e.left;
+    if (e.right.id == 'minecraft:emerald') {
+        let outputItem = item.copy();
         let quality = getRandomQuality();
 
-        // 创建输出物品的副本
-        let outputItem = leftItem.copy();
+        // 定义一个映射表，用于处理不同类型的装备
+        let tagMap = {
+            'mryh:sword': 'mryh_attribute',
+            'mryh:armor_head': 'mryh_attribute_armor_head',
+            'mryh:armor_chest': 'mryh_attribute_armor_chest',
+            'mryh:armor_legs': 'mryh_attribute_armor_legs',
+            'mryh:armor_feet': 'mryh_attribute_armor_feet'
+        };
 
-        // 检测物品是否是装备
-        function isArmor(itemStack) {
-            let slotType = itemStack.getEquipmentSlot();
-            return slotType === $EquipmentSlot.HEAD ||
-                   slotType === $EquipmentSlot.CHEST ||
-                   slotType === $EquipmentSlot.LEGS ||
-                   slotType === $EquipmentSlot.FEET;
-        }
-        console.log('测试3')
-        // 检测物品是否是主手物品
-        function isMainHand(itemStack) {
-            let slotType = itemStack.getEquipmentSlot();
-            return slotType === $EquipmentSlot.MAINHAND;
-        }
-        console.log('测试4')
-        if (isArmor(leftItem)) {
-            // 装备
-            let slotType = leftItem.getEquipmentSlot();
-            console.log('测试5')
-            switch (slotType) {
-                case $EquipmentSlot.HEAD:
-                    outputItem.nbt.putString("mryh_attribute_armor_head", `${quality}_armor`);
-                    break;
-                case $EquipmentSlot.CHEST:
-                    outputItem.nbt.putString("mryh_attribute_armor_chest", `${quality}_armor`);
-                    break;
-                case $EquipmentSlot.LEGS:
-                    outputItem.nbt.putString("mryh_attribute_armor_legs", `${quality}_armor`);
-                    break;
-                case $EquipmentSlot.FEET:
-                    outputItem.nbt.putString("mryh_attribute_armor_feet", `${quality}_armor`);
-                    break;
+        // 遍历映射表，检查物品是否具有对应的标签
+        for (let [tag, nbtKey] of Object.entries(tagMap)) {
+            if (outputItem.hasTag(tag)) {
+                outputItem.nbt.putString(nbtKey, `${quality}${tag.includes('armor') ? '_armor' : ''}`);
+                e.setOutput(outputItem);
+                e.setCost(2); // 设置经验成本
+                e.setMaterialCost(1); // 设置材料消耗
+                break; // 一旦匹配到一个标签，就不再继续检查其他标签
             }
-        } else if (isMainHand(leftItem)) {
-            // 主手物品
-            outputItem.nbt.putString("mryh_attribute", quality);
-            console.log('测试6')
-        }
-        console.log('测试7')
-        // 设置输出物品
-        e.set
-        e.setOutput(outputItem);
-        e.setCost(2); // 设置经验成本
-        e.setMaterialCost(1); // 设置材料消耗
-        console.log('测试8')
-    }
-});
-*/
-/*
-NativeEvents.onEvent($AnvilUpdateEvent, (e) => {
-    let item = e.left;
-    if (e.right.id == 'minecraft:emerald') {
-        let outputItem = item.copy();
-        if (!outputItem.nbt) {
-            outputItem.nbt = {};
-        }
-        let equipmentSlot = item.equipmentSlot
-        let MAINHAND = $EquipmentSlotType.MAINHAND
-        console.log(equipmentSlot)
-        console.log(MAINHAND)
-        if (equipmentSlot == MAINHAND) {
-            outputItem.nbt.putString("mryh_attribute", getRandomQuality());
-            e.setOutput(outputItem);
-            e.setCost(2); // 设置经验成本
-            e.setMaterialCost(1); // 设置材料消耗
-        }
-    }
-});
-*/
-NativeEvents.onEvent($AnvilUpdateEvent, (e) => {
-    let item = e.left;
-    if (e.right.id == 'minecraft:emerald') {
-        let outputItem = item.copy();
-        let quality = getRandomQuality();
-        if(outputItem.hasTag('forge:tools')){
-            outputItem.nbt.putString("mryh_attribute", quality)
-            e.setOutput(outputItem);
-            e.setCost(2); // 设置经验成本
-            e.setMaterialCost(1); // 设置材料消耗 
         }
     }
 });
