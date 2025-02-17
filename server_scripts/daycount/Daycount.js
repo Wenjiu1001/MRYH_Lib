@@ -1,35 +1,24 @@
-PlayerEvents.tick(event => {
-    // 当前天数
-    const day = Math.floor(event.level.dayTime() / 24000);
-    const player=event.player.name.string
-    //一百天成就
-    switch (day) {
-        case 0: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive1`)
-            break;
-        case 10: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive10`)
-            break;
-        case 20: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive20`)
-            break;
-        case 30: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive30`)
-            break;
-        case 40: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive40`)
-            break;
-        case 50: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive50`)
-            break;
-        case 60: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive60`)
-            break;
-        case 70: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive70`)
-            break;
-        case 80: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive80`)
-            break;
-        case 90: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive90`)
-            break;
-        case 100: event.server.runCommandSilent(`/advancement grant ${player} only minecraft:survive/survive100`)
-            break;
-        default:
 
+PlayerEvents.tick(event => {
+    let player = event.player;
+    let playerName = player.name.string;
+    let currentDay = Math.floor(event.level.dayTime() / 24000);
+
+    // 假设 player 持久化数据中存储了上次获得成就的天数
+    let lastDayGranted = player.persistentData.get("last_day_granted") || -1;
+
+    // 如果 currentDay 比 lastDayGranted 大，说明需要发放成就
+    if (currentDay > lastDayGranted) {
+        // 遍历从 lastDayGranted + 1 到 currentDay 的所有天数
+        for (let day = lastDayGranted + 1; day <= currentDay; day++) {
+            // 发放成就
+            event.server.runCommandSilent(`/advancement grant ${playerName} only minecraft:survive/survive${day}`);
+        }
+
+        // 更新 player 的持久化数据
+        player.persistentData.putInt("last_day_granted", currentDay);
     }
-})
+});
 
 PlayerEvents.loggedIn((event) => {
     event.server.runCommandSilent('/gamerule keepInventory true')
