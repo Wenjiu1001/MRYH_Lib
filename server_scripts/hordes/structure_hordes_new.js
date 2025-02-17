@@ -1,4 +1,7 @@
 
+let $ResourceKey=Java.loadClass('net.minecraft.resources.ResourceKey')
+let $Registries=Java.loadClass('net.minecraft.core.registries.Registries')
+
 /**
  * 获取结构的ResourceKey
  * @param {Special.Structure} structureName  
