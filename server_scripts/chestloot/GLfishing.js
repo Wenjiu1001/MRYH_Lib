@@ -1,9 +1,3 @@
-let randomCount = Math.floor(Math.random() * (10 - 5 + 1)) + 10;
-let randomCountlow = Math.floor(Math.random() * (2 - 0 + 1)) + 10;
-let randomEnchantLevel = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
-let randomEnchantLevellow = Math.floor(Math.random() * (10 - 0 + 1)) + 10;
-let randomChance = Math.random() * (0.7 - 0.1) + 0.1;
-let randomChancelow = Math.random() * (0.1 - 0.01) + 0.1;
 
 // 定义一般配件的数组
 let lootPoolGeneral = [
@@ -129,11 +123,23 @@ LootJS.modifiers((event) => {
         .randomChance(0.5)
         .apply((context) => {
             // 70%一般配件
-            context.addLoot(LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomGeneralItem() }).withChance(randomChance).when((c) => c.randomChance(0.7)));
+            context.addLoot(
+                LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomGeneralItem() })
+                    .withChance(getRandomChance(0.1, 0.7))
+                    .when((c) => c.randomChance(getRandomChance(0.1, 0.7)))
+            );
             // 20%倍镜扩容
-            context.addLoot(LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomScopeItem() }).withChance(randomChance).when((c) => c.randomChance(0.2)));
+            context.addLoot(
+                LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomScopeItem() })
+                    .withChance(getRandomChance(0.1, 0.7))
+                    .when((c) => c.randomChance(getRandomChance(0.1, 0.7)))
+            );
             // 10%特殊配件
-            context.addLoot(LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomSpecialItem() }).withChance(randomChance).when((c) => c.randomChance(0.1)));
+            context.addLoot(
+                LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomSpecialItem() })
+                    .withChance(getRandomChance(0.1, 0.7))
+                    .when((c) => c.randomChance(getRandomChance(0.1, 0.7)))
+            );
         });
     // 30%特殊升级件
     event
@@ -141,8 +147,16 @@ LootJS.modifiers((event) => {
         .randomChance(0.3)
         .apply((context) => {
             // 50%EMX升级件
-            context.addLoot(LootEntry.of('tacz:ammo', 1, { AmmoId: getRandomEMXItem() }).withChance(randomChance).when((c) => c.randomChance(0.5)));
+            context.addLoot(
+                LootEntry.of('tacz:ammo', 1, { AmmoId: getRandomEMXItem() })
+                    .withChance(getRandomChance(0.1, 0.7))
+                    .when((c) => c.randomChance(getRandomChance(0.1, 0.7)))
+            );
             // 50%其他升级件
-            context.addLoot(LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomAdditionalItem() }).withChance(randomChance).when((c) => c.randomChance(0.5)));
+            context.addLoot(
+                LootEntry.of('tacz:attachment', 1, { AttachmentId: getRandomAdditionalItem() })
+                    .withChance(getRandomChance(0.1, 0.7))
+                    .when((c) => c.randomChance(getRandomChance(0.1, 0.7)))
+            );
         });
 });
