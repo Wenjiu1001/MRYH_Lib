@@ -46,7 +46,13 @@ PlayerEvents.tick(event => {
         if (healthToReduce > 0) {
             let currentHealth = player.getHealth();
             let newHealth = Math.max(currentHealth - healthToReduce * reductionFactor, 0);
-            player.health = newHealth
+                if (newHealth <= 0) {
+                    // 如果生命值小于等于 0，则杀死玩家
+                    player.kill()
+                } else {
+                    // 否则，减少生命值
+                    player.health = newHealth;
+                }
         }
     }
 
