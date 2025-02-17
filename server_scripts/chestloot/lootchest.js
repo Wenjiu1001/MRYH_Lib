@@ -1,11 +1,26 @@
-/*
+// 居民住宅战利品表
 ServerEvents.chestLootTables(event => {
-    event.addChest("minecraft:ancient_city", Loot => {
-        Loot.addPool(pool => {
-            pool.addTag(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:150,GunFireMode:"AUTO",GunId:"lradd:mg42",HasBulletInBarrel:1b}'),true)
-            pool.rolls = 1
+    event.modify('mryh:apartment_1', loot => {
+        loot.addPool(pool => {
+            pool.addItem('minecraft:diamond')
         })
     })
 
+    event.modify('mryh:apartment_2', loot => {
+        loot.addPool(pool => {
+            pool.addItem('minecraft:diamond')
+        })
+    })
+
+    event.modify('mryh:apartment_3', loot => {
+        loot.addPool(pool => {
+            pool.addItem('minecraft:diamond')
+        })
+    })
+
+    event.modify('mryh:apartment_4', loot => {
+        loot.addPool(pool => {
+            pool.addItem('minecraft:diamond')
+        })
+    })
 })
-    */
