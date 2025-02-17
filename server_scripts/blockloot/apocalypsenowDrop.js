@@ -1,49 +1,6 @@
-let randomCount = Math.floor(Math.random() * (10 - 5 + 1)) + 10;
-let randomCountlow = Math.floor(Math.random() * (2 - 0 + 1)) + 10;
-let randomEnchantLevel = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
-let randomEnchantLevellow = Math.floor(Math.random() * (10 - 0 + 1)) + 10;
-let randomChance = Math.random() * (0.7 - 0.1) + 0.1;
-let randomChancelow = Math.random() * (0.1 - 0.01) + 0.1;
 
-const droplowLuck = [
-];
-const drophighLuck = [
-];
-function dropluck01(luck) {
-    if (luck > 0 && luck < 6) {
-        return droplowLuck;
-    } else if (luck >= 6) {
-        return drophighLuck;
-    } else {
-        return [];
-    }
-}
-function dropluck02(droplootPool) {
-    if (droplootPool.length === 0) return null;
-    const droprandom = Math.floor(Math.random() * droplootPool.length);
-    return droplootPool[droprandom];
-}
-
-const medicalairdroplowLuck = [
-];
-const medicalairdrophighLuck = [
-];
-function medicalairdropluck01(luck) {
-    if (luck > 0 && luck < 6) {
-        return medicalairdroplowLuck;
-    } else if (luck >= 6) {
-        return medicalairdrophighLuck;
-    } else {
-        return [];
-    }
-}
-function medicalairdropluck02(medicalairdroplootPool) {
-    if (medicalairdroplootPool.length === 0) return null;
-    const medicalairdroprandom = Math.floor(Math.random() * medicalairdroplootPool.length);
-    return medicalairdroplootPool[medicalairdroprandom];
-}
-
-const militaryairdroplowLuck = [
+// 定义掉落物品的数组
+let militaryairdroplowLuck = [
     "marbledsarsenal:black_juggernaut_armor_helmet",
     "zombiekit:standard_riot_helmet",
     "zombiekit:snow_riot_helmet",
@@ -205,7 +162,7 @@ const militaryairdroplowLuck = [
     "apocalypsenow:military_urban_boots",
     "apocalypsenow:advanced_hazmat_suit_boots"
 ];
-const militaryairdrophighLuck = [
+let militaryairdrophighLuck = [
     "zombiekit:standard_tactical_helmet",
     "zombiekit:standard_tactical_chestplate",
     "zombiekit:standard_tactical_leggings",
@@ -227,6 +184,8 @@ const militaryairdrophighLuck = [
     "apocalypsenow:forestguard_leggings",
     "apocalypsenow:forestguard_boots"
 ];
+
+// 定义获取掉落物品的函数
 function militaryairdropluck01(luck) {
     if (luck > 0 && luck < 6) {
         return militaryairdroplowLuck;
@@ -238,48 +197,24 @@ function militaryairdropluck01(luck) {
 }
 function militaryairdropluck02(militaryairdroplootPool) {
     if (militaryairdroplootPool.length === 0) return null;
-    const militaryairdroprandom = Math.floor(Math.random() * militaryairdroplootPool.length);
+    let militaryairdroprandom = Math.floor(Math.random() * militaryairdroplootPool.length);
     return militaryairdroplootPool[militaryairdroprandom];
 }
 
+// 应用LootJS修改器
 LootJS.modifiers((event) => {
-    event.addBlockLootModifier("apocalypsenow:blocks/dropboxcommon")
-        .randomChance(0.8)
-        .apply((context) => {
-            let luck = context.getLuck();
-            let droploot = dropluck01(luck);
-            const droprandomLoot = dropluck02(droploot);
-            if (droprandomLoot !== null) {
-                context.addLoot(LootEntry.of(droprandomLoot, randomCountlow).withChance(randomChance))
-                context.addLoot(LootEntry.of(droprandomLoot, randomCountlow).withChance(randomChance))
-                context.addLoot(LootEntry.of(droprandomLoot, randomCountlow).withChance(randomChance))
-            }
-        })
-    event.addBlockLootModifier("apocalypsenow:blocks/medicalairdropbox")
-        .randomChance(0.8)
-        .apply((context) => {
-            let luck = context.getLuck();
-            let medicalairdroploot = medicalairdropluck01(luck);
-            const medicalairdroprandomLoot = medicalairdropluck02(medicalairdroploot);
-            if (medicalairdroprandomLoot !== null) {
-                context.addLoot(LootEntry.of(medicalairdroprandomLoot, randomCountlow).withChance(randomChance))
-                context.addLoot(LootEntry.of(medicalairdroprandomLoot, randomCountlow).withChance(randomChance))
-                context.addLoot(LootEntry.of(medicalairdroprandomLoot, randomCountlow).withChance(randomChance))
-            }
-        })
     event.addBlockLootModifier("apocalypsenow:blocks/militaryairdrop")
         .removeLoot(Ingredient.all)
         .randomChance(0.8)
         .apply((context) => {
             let luck = context.getLuck();
             let militaryairdroploot = militaryairdropluck01(luck);
-            const militaryairdroprandomLoot = militaryairdropluck02(militaryairdroploot);
-            if (militaryairdroprandomLoot !== null) {
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(randomChance).enchantWithLevels(randomEnchantLevellow))
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(randomChance).enchantWithLevels(randomEnchantLevellow))
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(randomChance).enchantWithLevels(randomEnchantLevel))
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(randomChance).enchantWithLevels(randomEnchantLevel))
+            let militaryairdroprandomLoot = militaryairdropluck02(militaryairdroploot);
+            if (militaryairdroprandomLoot != null) {
+                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(10, 30)))
+                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(10, 30)))
+                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(30, 50)))
+                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(30, 50)))
             }
-        })
-
-})
+        });
+});
