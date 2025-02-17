@@ -1,312 +1,90 @@
+
 ServerEvents.entityLootTables(event => {
-    event.modifyEntity("zombie_extreme:assasin_black_ops", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(245)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
+    const entities = [
+        "zombie_extreme:assasin_black_ops",
+        "zombie_extreme:chainsaw",
+        "zombie_extreme:infected_juggernaut",
+        "spore:inf_scientist",
+        "spore:inf_player",
+        "spore:inf_drowned",
+        "spore:inf_wanderer",
+        "spore:inf_evoker",
+        "spore:inf_vindicator",
+        "spore:inf_pillager",
+        "spore:inf_witch",
+        "spore:inf_villager",
+        "spore:inf_husk",
+        "spore:inf_human",
+        "undead_revamp2:thebeartamer"
+    ];
 
-    event.modifyEntity("zombie_extreme:chainsaw", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(245)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
+    entities.forEach(entity => {
+        event.modifyEntity(entity, Loot => {
+            Loot.addPool(pool => {
+                pool.killedByPlayer();
 
-    event.modifyEntity("zombie_extreme:infected_juggernaut", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(245)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
+                const items = [
+                    { item: "iron_ingot", weight: 400, count: 5 },
+                    { item: "gold_ingot", weight: 200, count: 5 },
+                    { item: "diamond", weight: 100, count: 2 },
+                    { item: "emerald", weight: 50 },
+                    { item: "netherite_scrap", weight: 5 }
+                ];
 
-    event.modifyEntity("spore:inf_scientist", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
+                // 使用 concat() 方法避免潜在的语法问题
+                const pool1Items = entity.startsWith("spore:") 
+                    ? items.concat([{ item: "minecraft:dragon_breath", weight: 50 }])
+                    : items;
 
-    event.modifyEntity("spore:inf_player", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
+                pool1Items.forEach(item => {
+                    const adjustedWeight = item.weight > 5 ? Math.floor(item.weight / 2) : item.weight;
+                    const count = item.count instanceof Array ? item.count : [item.count, item.count];
+                    const adjustedCount = (
+                        typeof item.count === "object"
+                        ? item.count[0] < 2 || item.count[1] > 5
+                        : false
+                    )
+                        ? item.count
+                        : item.count;
 
-    event.modifyEntity("spore:inf_drowned", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
+                    pool.addItem(item.item)
+                        .weight(adjustedWeight)
+                        .count(adjustedCount);
+                });
 
-    event.modifyEntity("spore:inf_wanderer", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
+                const sumWeight = pool1Items.reduce(
+                    (total, item) => total + (item.weight > 5 ? Math.floor(item.weight / 2) : item.weight),
+                    0
+                );
+                pool.addEmpty(1000 - sumWeight);
+            });
 
-    event.modifyEntity("spore:inf_evoker", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
+            Loot.addPool(pool => {
+                const moneyItems = [
+                    { item: "apocalypsenow:money", weight: 600, count: [5, 10] },
+                    { item: "apocalypsenow:money_block", weight: 10 }
+                ];
 
-    event.modifyEntity("spore:inf_vindicator", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
+                moneyItems.forEach(item => {
+                    const adjustedWeight = item.weight > 5 ? Math.floor(item.weight / 2) : item.weight;
+                    const adjustedCount = (
+                        item.count instanceof Array
+                            ? item.count[0] < 2 || item.count[1] > 5
+                            : false
+                    )
+                        ? item.count
+                        : item.count;
+                    pool.addItem(item.item)
+                        .weight(adjustedWeight)
+                        .count(adjustedCount);
+                });
 
-    event.modifyEntity("spore:inf_pillager", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
-
-    event.modifyEntity("spore:inf_witch", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
-
-    event.modifyEntity("spore:inf_villager", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
-
-    event.modifyEntity("spore:inf_husk", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
-
-    event.modifyEntity("spore:inf_human", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("modern_structures:netherstarshard").weight(100)
-            pool.addEmpty(900)
-        })
-    })
-
-    event.modifyEntity("undead_revamp2:thebeartamer", Loot => {
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("iron_ingot").weight(400).count(5)
-            pool.addItem("gold_ingot").weight(200).count(5)
-            pool.addItem("diamond").weight(100).count(2)
-            pool.addItem("minecraft:dragon_breath").weight(50)
-            pool.addItem("emerald").weight(50)
-            pool.addItem("netherite_scrap").weight(5)
-            pool.addEmpty(195)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([5, 10])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
-})
+                const sumMoneyWeight = moneyItems.reduce(
+                    (total, item) => total + (item.weight > 5 ? Math.floor(item.weight / 2) : item.weight),
+                    0
+                );
+                pool.addEmpty(1000 - sumMoneyWeight);
+            });
+        });
+    });
+});
