@@ -486,5 +486,8 @@ ServerEvents.recipes(event => {
             A: 'mryh:unknown_mythical_blueprint',
             B: 'minecraft:emerald'
         })
+        // Item.of('minecraft:water_bucket', '{Purity:3}')
+    event.remove({ id: 'thirst:water_bucket_from_smelting_acceptable' })
+    event.remove({ id: 'thirst:water_bucket_from_smelting_purfied' })
 })
 
