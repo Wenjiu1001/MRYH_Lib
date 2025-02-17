@@ -1,3 +1,4 @@
+
 ServerEvents.entityLootTables(event => {
     event.modifyEntity("spore:howitzer", Loot => {
         Loot.addPool(pool => {
