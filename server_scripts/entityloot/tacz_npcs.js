@@ -1,122 +1,43 @@
+
 ServerEvents.entityLootTables(event => {
 
-    event.modifyEntity("tacz_npcs:scav", Loot => {
+    event.modifyEntity("tacz_npc:duty", Loot => {
 
         Loot.addPool(pool => {
             pool.killedByPlayer()
-            pool.addItem("copper_ingot").weight(300)
-            pool.addItem("coal").weight(200)
-            pool.addItem("iron_ingot").weight(150)
-            pool.addItem("gold_ingot").weight(100)
-            pool.addItem("diamond").weight(50)
-            pool.addItem("emerald").weight(10)
-            pool.addItem("netherite_scrap").weight(1)
-            pool.addEmpty(189)
+            pool.addItem("copper_ingot").weight(150) // 300 / 2
+            pool.addItem("coal").weight(100) // 200 / 2
+            pool.addItem("iron_ingot").weight(75) // 150 / 2
+            pool.addItem("gold_ingot").weight(50) // 100 / 2
+            pool.addItem("diamond").weight(25) // 50 / 2
+            pool.addItem("emerald").weight(10) // 不变
+            pool.addItem("netherite_scrap").weight(1) // 不变
+            pool.addEmpty(414) // 1000 - (150+100+75+50+25+10+1) = 414
         })
         Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
+            pool.addItem("apocalypsenow:money").weight(300).count([1, 2]) // 600 / 2
+            pool.addItem("apocalypsenow:money_block").weight(5) // 10 / 2
+            pool.addEmpty(695) // 1000 - (300+5) = 695
         })
     })
 
-    event.modifyEntity("tacz_npcs:scav_usec", Loot => {
+    event.modifyEntity("tacz_npc:bandit", Loot => {
 
         Loot.addPool(pool => {
             pool.killedByPlayer()
-            pool.addItem("copper_ingot").weight(300)
-            pool.addItem("coal").weight(200)
-            pool.addItem("iron_ingot").weight(150)
-            pool.addItem("gold_ingot").weight(100)
-            pool.addItem("diamond").weight(50)
-            pool.addItem("emerald").weight(10)
-            pool.addItem("netherite_scrap").weight(1)
-            pool.addEmpty(189)
+            pool.addItem("copper_ingot").weight(150) // 300 / 2
+            pool.addItem("coal").weight(100) // 200 / 2
+            pool.addItem("iron_ingot").weight(75) // 150 / 2
+            pool.addItem("gold_ingot").weight(50) // 100 / 2
+            pool.addItem("diamond").weight(25) // 50 / 2
+            pool.addItem("emerald").weight(10) // 不变
+            pool.addItem("netherite_scrap").weight(1) // 不变
+            pool.addEmpty(414) // 1000 - (150+100+75+50+25+10+1) = 414
         })
         Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
-
-    event.modifyEntity("tacz_npcs:scav_usec_armored", Loot => {
-
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("copper_ingot").weight(300)
-            pool.addItem("coal").weight(200)
-            pool.addItem("iron_ingot").weight(150)
-            pool.addItem("gold_ingot").weight(100)
-            pool.addItem("diamond").weight(50)
-            pool.addItem("emerald").weight(10)
-            pool.addItem("netherite_scrap").weight(1)
-            pool.addEmpty(189)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
-
-    event.modifyEntity("tacz_npcs:scav_usec_pistol", Loot => {
-
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("copper_ingot").weight(300)
-            pool.addItem("coal").weight(200)
-            pool.addItem("iron_ingot").weight(150)
-            pool.addItem("gold_ingot").weight(100)
-            pool.addItem("diamond").weight(50)
-            pool.addItem("emerald").weight(10)
-            pool.addItem("netherite_scrap").weight(1)
-            pool.addEmpty(189)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
-
-    event.modifyEntity("tacz_npcs:scav_usec_pistol_armored", Loot => {
-
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("copper_ingot").weight(300)
-            pool.addItem("coal").weight(200)
-            pool.addItem("iron_ingot").weight(150)
-            pool.addItem("gold_ingot").weight(100)
-            pool.addItem("diamond").weight(50)
-            pool.addItem("emerald").weight(10)
-            pool.addItem("netherite_scrap").weight(1)
-            pool.addEmpty(189)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
-        })
-    })
-
-    event.modifyEntity("tacz_npcs:test_scav", Loot => {
-
-        Loot.addPool(pool => {
-            pool.killedByPlayer()
-            pool.addItem("copper_ingot").weight(300)
-            pool.addItem("coal").weight(200)
-            pool.addItem("iron_ingot").weight(150)
-            pool.addItem("gold_ingot").weight(100)
-            pool.addItem("diamond").weight(50)
-            pool.addItem("emerald").weight(10)
-            pool.addItem("netherite_scrap").weight(1)
-            pool.addEmpty(189)
-        })
-        Loot.addPool(pool => {
-            pool.addItem("apocalypsenow:money").weight(600).count([1, 2])
-            pool.addItem("apocalypsenow:money_block").weight(10)
-            pool.addEmpty(390)
+            pool.addItem("apocalypsenow:money").weight(300).count([1, 2]) // 600 / 2
+            pool.addItem("apocalypsenow:money_block").weight(5) // 10 / 2
+            pool.addEmpty(695) // 1000 - (300+5) = 695
         })
     })
 })
