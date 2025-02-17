@@ -1,12 +1,6 @@
-let randomCount = Math.floor(Math.random() * (10 - 5 + 1)) + 10;
-let randomCountlow = Math.floor(Math.random() * (2 - 0 + 1)) + 10;
-let randomEnchantLevel = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
-let randomEnchantLevellow = Math.floor(Math.random() * (10 - 0 + 1)) + 10;
-let randomChance = Math.random() * (0.7 - 0.1) + 0.1;
-let randomChancelow = Math.random() * (0.1 - 0.01) + 0.1;
 
 // 矿物luck函数
-const lowLuck01 = [
+let lowLuck01 = [
     "zombie_extreme:ingot_aluminum",
     "zombie_extreme:ingot_bronze",
     "zombie_extreme:ingot_steel",
@@ -21,7 +15,7 @@ const lowLuck01 = [
     "k_turtles:titanium_ingot",
     "minecraft:beacon_payment_items"
 ];
-const highLuck01 = [
+let highLuck01 = [
     "minecraft:diamond",
     "minecraft:lapis_lazuli",
     "minecraft:emerald",
@@ -38,12 +32,12 @@ function lootpoolluck01(luck) {
 }
 function luck01(lootPool01) {
     if (lootPool01.length === 0) return null;
-    const randomIndex01 = Math.floor(Math.random() * lootPool01.length);
+    let randomIndex01 = Math.floor(Math.random() * lootPool01.length);
     return lootPool01[randomIndex01];
 }
 
 // 杂物luck函数
-const lowLuck03 = [
+let lowLuck03 = [
     "apocalypsenow:ducttape",
     "apocalypsenow:scrapmetal",
     "apocalypsenow:textilethread",
@@ -53,7 +47,7 @@ const lowLuck03 = [
     "immersiveengineering:component_iron",
     "immersiveengineering:hemp_fiber"
 ];
-const highLuck03 = [
+let highLuck03 = [
     "zombiekit:saltpeter",
     "zombiekit:rubber",
     "zombiekit:death_bat",
@@ -76,12 +70,12 @@ function lootpoolluck03(luck) {
 }
 function luck03(lootPool03) {
     if (lootPool03.length === 0) return null;
-    const randomIndex03 = Math.floor(Math.random() * lootPool03.length);
+    let randomIndex03 = Math.floor(Math.random() * lootPool03.length);
     return lootPool03[randomIndex03];
 }
 
 // 子弹luck函数
-const lowLuck04 = [
+let lowLuck04 = [
     "tacz:9mm",
     "tacz:45acp",
     "tacz:762x25",
@@ -99,7 +93,7 @@ const lowLuck04 = [
     "tacz:50bmg",
     "tacz:40mm"
 ];
-const highLuck04 = [
+let highLuck04 = [
     "create_armorer:rbapb",
     "emxarms:339x57x",
     "emxarms:x16sg",
@@ -172,12 +166,12 @@ function lootpoolluck04(luck) {
 }
 function luck04(lootPool04) {
     if (lootPool04.length === 0) return null;
-    const randomIndex04 = Math.floor(Math.random() * lootPool04.length);
+    let randomIndex04 = Math.floor(Math.random() * lootPool04.length);
     return lootPool04[randomIndex04];
 }
 
 // 医疗物品luck函数
-const lowLuck05 = [
+let lowLuck05 = [
     "minecraft:golden_apple",
     "farmersdelight:squid_ink_pasta",
     "farmersdelight:cooked_rice",
@@ -201,7 +195,7 @@ const lowLuck05 = [
     "zombie_extreme:syringe_stimulator",
     "zombie_extreme:experimental_serum"
 ];
-const highLuck05 = [
+let highLuck05 = [
     "apocalypsenow:pain_killers",
     "apocalypsenow:homemadeantibiotics",
     "apocalypsenow:antibiotics",
@@ -224,12 +218,12 @@ function lootpoolluck05(luck) {
 }
 function luck05(lootPool05) {
     if (lootPool05.length === 0) return null;
-    const randomIndex05 = Math.floor(Math.random() * lootPool05.length);
+    let randomIndex05 = Math.floor(Math.random() * lootPool05.length);
     return lootPool05[randomIndex05];
 }
 
 // 普通装备luck函数
-const lowLuck06 = [
+let lowLuck06 = [
     "marbledsarsenal:olive_juggernaut_armor_helmet",
     "marbledsarsenal:black_juggernaut_armor_helmet",
     "zombiekit:standard_riot_helmet",
@@ -271,7 +265,7 @@ const lowLuck06 = [
     "zombiekit:forest_tactical_boots",
     "zombiekit:desert_tactical_boots"
 ];
-const highLuck06 = [
+let highLuck06 = [
     "apocalypsenow:hockey_helmet",
     "apocalypsenow:contamination_suit_white_helmet",
     "marbledsarsenal:riot_armor_helmet",
@@ -323,12 +317,12 @@ function lootpoolluck06(luck) {
 }
 function luck06(lootPool06) {
     if (lootPool06.length === 0) return null;
-    const randomIndex06 = Math.floor(Math.random() * lootPool06.length);
+    let randomIndex06 = Math.floor(Math.random() * lootPool06.length);
     return lootPool06[randomIndex06];
 }
 
 // 普通枪械luck函数
-const lowLuck07 = [
+let lowLuck07 = [
     "tacz:deagle",
     "tacz:glock_17",
     "gz:military_ak74",
@@ -341,7 +335,7 @@ const lowLuck07 = [
     "tacz:m320",
     "gz:black_market_rpk74"
 ];
-const highLuck07 = [
+let highLuck07 = [
     "cib:galil",
     "cib:qbz951",
     "gz:pp19",
@@ -368,12 +362,12 @@ function lootpoolluck07(luck) {
 }
 function luck07(lootPool07) {
     if (lootPool07.length === 0) return null;
-    const randomIndex07 = Math.floor(Math.random() * lootPool07.length);
+    let randomIndex07 = Math.floor(Math.random() * lootPool07.length);
     return lootPool07[randomIndex07];
 }
 
 // 重要材料物品luck函数
-const lowLuck08 = [
+let lowLuck08 = [
     "minecraft:prismarine_shard",
     "minecraft:prismarine_crystals",
     "minecraft:nautilus_shell",
@@ -384,7 +378,7 @@ const lowLuck08 = [
     "minecraft:ghast_tear",
     "minecraft:blaze_rod"
 ];
-const highLuck08 = [
+let highLuck08 = [
     "mutantmonsters:creeper_shard",
     "philipsruins:frozen_prismarine_shard",
     "philipsruins:frozen_prismarine_crystals",
@@ -485,17 +479,17 @@ function lootpoolluck08(luck) {
 }
 function luck08(lootPool08) {
     if (lootPool08.length === 0) return null;
-    const randomIndex08 = Math.floor(Math.random() * lootPool08.length);
+    let randomIndex08 = Math.floor(Math.random() * lootPool08.length);
     return lootPool08[randomIndex08];
 }
 
 // 难度之心luck函数
-const lowLuck09 = [
+let lowLuck09 = [
     "scalinghealth:cursed_heart",
     "scalinghealth:enchanted_heart",
     "scalinghealth:chance_heart"
 ];
-const highLuck09 = [
+let highLuck09 = [
     "scalinghealth:heart_crystal",
     "scalinghealth:power_crystal"
 ];
@@ -510,17 +504,15 @@ function lootpoolluck09(luck) {
 }
 function luck09(lootPool09) {
     if (lootPool09.length === 0) return null;
-    const randomIndex09 = Math.floor(Math.random() * lootPool09.length);
+    let randomIndex09 = Math.floor(Math.random() * lootPool09.length);
     return lootPool09[randomIndex09];
 }
 
 // 任务道具luck函数
-const lowLuck10 = [
+let lowLuck10 = [];
 
-];
-const highLuck10 = [
+let highLuck10 = [];
 
-];
 function lootpoolluck10(luck) {
     if (luck > 0 && luck < 6) {
         return lowLuck10;
@@ -532,12 +524,12 @@ function lootpoolluck10(luck) {
 }
 function luck10(lootPool10) {
     if (lootPool10.length === 0) return null;
-    const randomIndex10 = Math.floor(Math.random() * lootPool10.length);
+    let randomIndex10 = Math.floor(Math.random() * lootPool10.length);
     return lootPool10[randomIndex10];
 }
 
 // 饰品luck函数
-const lowLuck11 = [
+let lowLuck11 = [
     "artifacts:flame_pendant",
     "artifacts:villager_hat",
     "artifacts:night_vision_goggles",
@@ -573,7 +565,7 @@ const lowLuck11 = [
     "artifacts:feral_claws",
     "artifacts:fire_gauntlet"
 ];
-const highLuck11 = [
+let highLuck11 = [
     "nameless_trinkets:cracked_crown",
     "nameless_trinkets:callus",
     "nameless_trinkets:what_magnet",
@@ -625,12 +617,12 @@ function lootpoolluck11(luck) {
 }
 function luck11(lootPool11) {
     if (lootPool11.length === 0) return null;
-    const randomIndex11 = Math.floor(Math.random() * lootPool11.length);
+    let randomIndex11 = Math.floor(Math.random() * lootPool11.length);
     return lootPool11[randomIndex11];
 }
 
 // 高级装备luck函数
-const lowLuck12 = [
+let lowLuck12 = [
     "apocalypsenow:spec_ops_boots",
     "apocalypsenow:spec_ops_leggings",
     "apocalypsenow:spec_ops_chestplate",
@@ -684,7 +676,7 @@ const lowLuck12 = [
     "apocalypsenow:canadian_army_chestplate",
     "apocalypsenow:canadian_army_helmet"
 ];
-const highLuck12 = [
+let highLuck12 = [
     "zombiekit:bomb_boots",
     "zombiekit:bomb_leggings",
     "zombiekit:bomb_chestplate",
@@ -709,12 +701,12 @@ function lootpoolluck12(luck) {
 }
 function luck12(lootPool12) {
     if (lootPool12.length === 0) return null;
-    const randomIndex12 = Math.floor(Math.random() * lootPool12.length);
+    let randomIndex12 = Math.floor(Math.random() * lootPool12.length);
     return lootPool12[randomIndex12];
 }
 
 // 高级枪械
-const lowLuck02 = [
+let lowLuck02 = [
     "converted:416sap",
     "converted:nails",
     "helldiver2:ar23p_liberator",
@@ -745,7 +737,7 @@ const lowLuck02 = [
     "helldiver2:sg225_breaker",
     "wemql:aa12m"
 ];
-const highLuck02 = [
+let highLuck02 = [
     "emxarms:emx_rivet",
     "emxarms:emx_draftsman_ev",
     "emxarms:emx_mg90",
@@ -793,7 +785,7 @@ function lootpoolluck02(luck) {
 }
 function luck02(lootPool02) {
     if (lootPool02.length === 0) return null;
-    const randomIndex02 = Math.floor(Math.random() * lootPool02.length);
+    let randomIndex02 = Math.floor(Math.random() * lootPool02.length);
     return lootPool02[randomIndex02];
 }
 
@@ -807,9 +799,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool01 = lootpoolluck01(luck);
-            const randomLoot01 = luck01(lootpool01);
+            let randomLoot01 = luck01(lootpool01);
             if (randomLoot01 !== null) {
-                context.addLoot(LootEntry.of(randomLoot01, randomCountlow).withChance(randomChance).when((c) => c.randomChance(0.8)))
+                context.addLoot(LootEntry.of(randomLoot01, getRandomNumber(5, 10)).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.8)))
             }
         });
     // 杂物
@@ -820,9 +812,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool03 = lootpoolluck03(luck);
-            const randomLoot03 = luck03(lootpool03);
+            let randomLoot03 = luck03(lootpool03);
             if (randomLoot03 !== null) {
-                context.addLoot(LootEntry.of(randomLoot03, randomCountlow).withChance(randomChance).when((c) => c.randomChance(0.7)))
+                context.addLoot(LootEntry.of(randomLoot03, getRandomNumber(1, 3)).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.7)))
             }
         });
     // 子弹
@@ -833,9 +825,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool04 = lootpoolluck04(luck);
-            const randomLoot04 = luck04(lootpool04);
+            let randomLoot04 = luck04(lootpool04);
             if (randomLoot04 !== null) {
-                context.addLoot(LootEntry.of('tacz:ammo', randomCount, { AmmoId: randomLoot04 }).withChance(randomChance).when((c) => c.randomChance(0.7)));
+                context.addLoot(LootEntry.of('tacz:ammo', getRandomNumber(1, 5), { AmmoId: randomLoot04 }).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.7)));
             }
         });
     // 医疗用品
@@ -846,9 +838,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool05 = lootpoolluck05(luck);
-            const randomLoot05 = luck05(lootpool05);
+            let randomLoot05 = luck05(lootpool05);
             if (randomLoot05 !== null) {
-                context.addLoot(LootEntry.of(randomLoot05, randomCountlow).withChance(randomChance).when((c) => c.randomChance(0.6)));
+                context.addLoot(LootEntry.of(randomLoot05, getRandomNumber(1, 2)).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.6)));
             }
         });
     // 普通装备
@@ -859,9 +851,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool06 = lootpoolluck06(luck);
-            const randomLoot06 = luck06(lootpool06);
+            let randomLoot06 = luck06(lootpool06);
             if (randomLoot06 !== null) {
-                context.addLoot(LootEntry.of(randomLoot06, 1).withChance(randomChance).enchantWithLevels(randomEnchantLevellow).when((c) => c.randomChance(0.5)));
+                context.addLoot(LootEntry.of(randomLoot06, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(10, 30)).when((c) => c.randomChance(0.5)));
             }
         });
     // 普通枪械
@@ -872,9 +864,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool07 = lootpoolluck07(luck);
-            const randomLoot07 = luck07(lootpool07);
+            let randomLoot07 = luck07(lootpool07);
             if (randomLoot07 !== null) {
-                context.addLoot(LootEntry.of('tacz:modern_kinetic_gun', 1, { GunId: randomLoot07 }).withChance(randomChance).when((c) => c.randomChance(0.6)));
+                context.addLoot(LootEntry.of('tacz:modern_kinetic_gun', 1, { GunId: randomLoot07 }).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.6)));
             }
         });
     // 重要材料物品
@@ -885,9 +877,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool08 = lootpoolluck08(luck);
-            const randomLoot08 = luck08(lootpool08);
+            let randomLoot08 = luck08(lootpool08);
             if (randomLoot08 !== null) {
-                context.addLoot(LootEntry.of(randomLoot08, randomCountlow).withChance(randomChance).when((c) => c.randomChance(0.4)));
+                context.addLoot(LootEntry.of(randomLoot08, getRandomNumber(1, 5)).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.4)));
             }
         });
     // 难度之心
@@ -898,9 +890,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool09 = lootpoolluck09(luck);
-            const randomLoot09 = luck09(lootpool09);
+            let randomLoot09 = luck09(lootpool09);
             if (randomLoot09 !== null) {
-                context.addLoot(LootEntry.of(randomLoot09, 1).withChance(randomChance).when((c) => c.randomChance(0.5)));
+                context.addLoot(LootEntry.of(randomLoot09, 1).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.5)));
             }
         });
     // 任务道具
@@ -911,9 +903,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool10 = lootpoolluck10(luck);
-            const randomLoot10 = luck10(lootpool10);
+            let randomLoot10 = luck10(lootpool10);
             if (randomLoot10 !== null) {
-                context.addLoot(LootEntry.of(randomLoot10, 1).withChance(randomChance).when((c) => c.randomChance(0.5)));
+                context.addLoot(LootEntry.of(randomLoot10, 1).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.5)));
             }
         });
     // 饰品
@@ -924,9 +916,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool11 = lootpoolluck11(luck);
-            const randomLoot11 = luck11(lootpool11);
+            let randomLoot11 = luck11(lootpool11);
             if (randomLoot11 !== null) {
-                context.addLoot(LootEntry.of(randomLoot11, 1).withChance(randomChance).when((c) => c.randomChance(0.3)));
+                context.addLoot(LootEntry.of(randomLoot11, 1).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.3)));
             }
         });
     // 高级装备
@@ -937,9 +929,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool12 = lootpoolluck12(luck);
-            const randomLoot12 = luck12(lootpool12);
+            let randomLoot12 = luck12(lootpool12);
             if (randomLoot12 !== null) {
-                context.addLoot(LootEntry.of(randomLoot12, 1).withChance(randomChance).enchantWithLevels(randomEnchantLevel).when((c) => c.randomChance(0.3)));
+                context.addLoot(LootEntry.of(randomLoot12, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(30, 50)).when((c) => c.randomChance(0.3)));
             }
         });
     // 高级枪械
@@ -950,9 +942,9 @@ LootJS.modifiers((event) => {
             // 获取当前的幸运值添加luck战利品
             let luck = context.getLuck();
             let lootpool02 = lootpoolluck02(luck);
-            const randomLoot02 = luck02(lootpool02);
+            let randomLoot02 = luck02(lootpool02);
             if (randomLoot02 !== null) {
-                context.addLoot(LootEntry.of('tacz:modern_kinetic_gun', 1, { GunId: randomLoot02 }).withChance(randomChance).when((c) => c.randomChance(0.5)));
+                context.addLoot(LootEntry.of('tacz:modern_kinetic_gun', 1, { GunId: randomLoot02 }).withChance(getRandomChance(0.1, 0.7)).when((c) => c.randomChance(0.5)));
             }
         });
-})
+});
