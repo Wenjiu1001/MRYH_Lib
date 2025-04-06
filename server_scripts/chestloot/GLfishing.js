@@ -1,4 +1,4 @@
-
+/*
 // 定义一般配件的数组
 let lootPoolGeneral = [
     "emxarms:bayonet_emx_skyhunter",
@@ -160,3 +160,4 @@ LootJS.modifiers((event) => {
             );
         });
 });
+*/
