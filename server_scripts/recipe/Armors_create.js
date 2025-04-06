@@ -1,3 +1,4 @@
+
 // 序列组装
 ServerEvents.recipes(event => {
 	// 使用变量存储过渡物品可以使代码更易读
