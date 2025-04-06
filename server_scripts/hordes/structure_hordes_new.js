@@ -350,8 +350,8 @@ PlayerEvents.tick(e => {
                 playerData.putInt("mryh:lastHordeTriggerTime", currentTime);
                 let day = Math.floor(level.dayTime() / 24000);
                 let hordeType = updateHordeType(day); // 根据天数更新尸潮类型
-                player.tell("尸潮即将来袭！");
-                player.runCommandSilent(`/hordes spawnWave ${player.name.string} 10 ${hordeType}`);
+                player.tell("你惊动了某处的怪物！尸潮即将来袭！");
+                player.runCommandSilent(`/hordes spawnWave ${player.name.string} 30 ${hordeType}`);
             }
         }
     }
