@@ -1,5 +1,6 @@
 
 let radiation = 0
+let hordes_spawn = 0
 NetworkEvents.dataReceived('mryh:radiation', event => {
     const data = event.data;
     radiation = data.getInt('radiation');
@@ -11,5 +12,13 @@ NetworkEvents.dataReceived('mryh:radiation', event => {
     }
     if (radiation == 3) {
         event.player.tell(`你受到抗辐射药水的保护，没有受到伤害。`);
+    }
+});
+
+NetworkEvents.dataReceived('mryh:hordes_spawn', event => {
+    const data = event.data;
+    radiation = data.getInt('hordes_spawn');
+    if (radiation == 1) {
+        event.player.playSound('mryh:music.horde_spawn');
     }
 });
