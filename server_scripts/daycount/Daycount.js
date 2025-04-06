@@ -5,7 +5,7 @@ PlayerEvents.tick(event => {
     let currentDay = Math.floor(event.level.dayTime() / 24000);
 
     // 假设 player 持久化数据中存储了上次获得成就的天数
-    let lastDayGranted = player.persistentData.get("last_day_granted") || -1;
+    let lastDayGranted = player.persistentData.getInt("last_day_granted") || -1;
 
     // 如果 currentDay 比 lastDayGranted 大，说明需要发放成就
     if (currentDay > lastDayGranted) {
@@ -21,6 +21,6 @@ PlayerEvents.tick(event => {
 });
 
 PlayerEvents.loggedIn((event) => {
-    event.server.runCommandSilent('/gamerule keepInventory true')
     event.server.runCommandSilent('/gamerule hordeMultiplying false')
 })
+
