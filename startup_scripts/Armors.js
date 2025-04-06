@@ -1,3 +1,4 @@
+
 ItemEvents.modification(event => {
     /*
         // 支持任意有伤害的工具，例如铲子，镐子
@@ -14,7 +15,7 @@ ItemEvents.modification(event => {
             item.setDigSpeed(100);
         });
     */
-   
+
     // 仅支持盔甲
     // 实验性外骨骼
     event.modify("zombiekit:exo_helmet", item => {
@@ -609,6 +610,38 @@ ItemEvents.modification(event => {
     });
     event.modify("apocalypsenow:forestguard_boots", item => {
         item.setArmorProtection(4); // 盔甲值
+        item.setArmorToughness(3); // 盔甲韧性
+        item.setArmorKnockbackResistance(1); // 击退抗性
+        item.setMaxDamage(800);// 最大耐久度
+    });
+
+    // 反孢子特殊装甲
+    event.modify("spore:inf_helmet", item => {
+        item.setArmorProtection(8); // 盔甲值
+        item.setArmorToughness(3); // 盔甲韧性
+        item.setArmorKnockbackResistance(1); // 击退抗性
+        item.setMaxDamage(800);// 最大耐久度
+    });
+    event.modify("spore:inf_chest", item => {
+        item.setArmorProtection(12); // 盔甲值
+        item.setArmorToughness(3); // 盔甲韧性
+        item.setArmorKnockbackResistance(1); // 击退抗性
+        item.setMaxDamage(800);// 最大耐久度
+    });
+    event.modify("spore:inf_up_chest", item => {
+        item.setArmorProtection(15); // 盔甲值
+        item.setArmorToughness(3); // 盔甲韧性
+        item.setArmorKnockbackResistance(1); // 击退抗性
+        item.setMaxDamage(800);// 最大耐久度
+    });
+    event.modify("spore:inf_pants", item => {
+        item.setArmorProtection(11); // 盔甲值
+        item.setArmorToughness(3); // 盔甲韧性
+        item.setArmorKnockbackResistance(1); // 击退抗性
+        item.setMaxDamage(800);// 最大耐久度
+    });
+    event.modify("spore:inf_boots", item => {
+        item.setArmorProtection(6); // 盔甲值
         item.setArmorToughness(3); // 盔甲韧性
         item.setArmorKnockbackResistance(1); // 击退抗性
         item.setMaxDamage(800);// 最大耐久度
