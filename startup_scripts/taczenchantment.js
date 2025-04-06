@@ -17,11 +17,6 @@ StartupEvents.registry("enchantment", e => {
         .canEnchant((item) => {
             return item.id == 'tacz:modern_kinetic_gun'
         })
-        .damageBonus((level, entityType) => {
-            if (entityType == "undead") {
-                return level * 2
-            }
-        })
         .minLevel(1)
         .maxLevel(5)
         .category('test')
