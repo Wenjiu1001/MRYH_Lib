@@ -1,3 +1,4 @@
+
 ServerEvents.recipes(event => {
     //俄罗斯标记
     event.remove({ output: 'apocalypsenow:russian_tag' })
@@ -172,6 +173,11 @@ ServerEvents.recipes(event => {
     event.remove({ mod: 'artifacts' })
     //删除k炮塔
     event.remove({ mod: 'k_turrets' })
+    event.recipes.minecraft.smelting('k_turrets:titanium_ingot',
+        'k_turrets:raw_titanium',
+        2,
+        100
+    )
     //删除cdu
     event.remove({ output: 'spore:cdu' })
     //增加末日生存工具包下界合金锻造
@@ -486,8 +492,22 @@ ServerEvents.recipes(event => {
             A: 'mryh:unknown_mythical_blueprint',
             B: 'minecraft:emerald'
         })
-        // Item.of('minecraft:water_bucket', '{Purity:3}')
+    // Item.of('minecraft:water_bucket', '{Purity:3}')
     event.remove({ id: 'thirst:water_bucket_from_smelting_acceptable' })
     event.remove({ id: 'thirst:water_bucket_from_smelting_purfied' })
+    // 电脑
+    event.shaped(Item.of('zombie_extreme:computer_monitor', 1), [
+        'DDD',
+        'BAB',
+        'CCC'
+    ],
+        {
+            A: 'zombie_extreme:circuit_diagram',
+            B: 'zombie_extreme:bronze_wire',
+            C: 'zombie_extreme:ignot_thorium',
+            D: 'zombie_extreme:ignotlead'
+        })
+    // 删除女仆祭坛
+    event.remove({id:'touhou_little_maid:altar/spawn_box'})
 })
 
