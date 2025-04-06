@@ -1,3 +1,4 @@
+
 LevelEvents.tick(event => {
     // 当前天数
     const day = Math.floor(event.level.dayTime() / 24000);
@@ -9,16 +10,17 @@ LevelEvents.tick(event => {
         event.server.runCommandSilent(`/title @a subtitle {"text":"活下去!","color":"red","italic":true}`)
     }
     // 每5天显示迎战尸潮
-    if (day % 5 == 0 && dayTick == 12400) {
+    if (day % 5 == 0 && dayTick == 12400 && day !== 0) {
         event.server.runCommandSilent(`/title @a title {"text":"迎战尸潮","color":"yellow","bold":true}`)
     }
     // 每隔5天的血月
-    if (day % 5 == 0 && dayTick == 13000) {
+    if (day % 5 == 0 && dayTick == 13000 && day !== 0) {
         event.server.runCommandSilent(`/enhancedcelestials setLunarEvent #enhancedcelestials:blood_moon`)
     }
     // 预告下一次血月
-    if (day % 5 == 0 && dayTick == 500) {
+    if (day % 5 == 0 && dayTick == 500 && day !== 0) {
         event.server.runCommandSilent(`/title @a title {"text":"血月降临","color":"yellow","bold":true}`)
         event.server.runCommandSilent(`/title @a subtitle {"text":"下一次第${day2}天","color":"red","italic":true}`)
     }
 })
+
