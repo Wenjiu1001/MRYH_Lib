@@ -1,6 +1,5 @@
 
 StartupEvents.registry("item", event => {
-    /*
     event.create("mryh:deinfection")
         .food(food => {
             food.alwaysEdible() //设置为无需消耗饱食度即可使用
@@ -22,6 +21,13 @@ StartupEvents.registry("item", event => {
                 rebuff.player.removeEffect("apocalypsenow:bite")
             })
         })
+    event.create("mryh:deradiationsickness")
+        .food(food => {
+            food.alwaysEdible() //设置为无需消耗饱食度即可使用
+            food.eaten(rebuff => {
+                rebuff.player.potionEffects.add("zombie_extreme:radiation_protection",)
+            })
+        })
     event.create("mryh:detoxicity")
         .food(food => {
             food.alwaysEdible() //设置为无需消耗饱食度即可使用
@@ -34,14 +40,6 @@ StartupEvents.registry("item", event => {
             food.alwaysEdible() //设置为无需消耗饱食度即可使用
             food.eaten(rebuff => {
                 rebuff.player.removeEffect("wegotrunnners:grounded")
-            })
-        })
-            */
-    event.create("mryh:deradiationsickness")
-        .food(food => {
-            food.alwaysEdible() //设置为无需消耗饱食度即可使用
-            food.eaten(rebuff => {
-                rebuff.player.potionEffects.add("mryh:noradiation")
             })
         })
 })
