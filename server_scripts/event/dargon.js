@@ -1,3 +1,4 @@
+
 let dragonMovementTimer = 0; // 计时器变量
 
 LevelEvents.tick(e => {
