@@ -1,11 +1,12 @@
 
-// 枪械数据调整
 TaCZServerEvents.gunDataLoad((event) => {
     let id = event.getId().toString();
     let json = JSON.parse(event.getStdJson());
     //===============================================初级枪械=========================================
     //***************手枪****************
     if (id === "applied_armorer:niklas_pistol_semi_pride_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 10.5 },
@@ -25,6 +26,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:standard_rail_pistol_mk3_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 7 },
@@ -44,6 +47,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:standard_rail_pistol_mk2_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 8 },
@@ -63,6 +68,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:standard_rail_pistol_mk1_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 13.5 },
@@ -82,21 +89,23 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:p2_peacemaker_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:45acp';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 4.5 },
-            { distance: 36, damage: 4 },
-            { distance: 50, damage: 3.5 },
-            { distance: 9999, damage: 3 }
+            { distance: 14, damage: 8.5 },
+            { distance: 36, damage: 7 },
+            { distance: 50, damage: 6.5 },
+            { distance: 9999, damage: 5 }
         ];
         // 射速
-        json.rpm = 700;
+        json.rpm = 600;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.2;
         // 爆头
-        json.bullet.extra_damage.head_shot_multiplier = 1.3;
+        json.bullet.extra_damage.head_shot_multiplier = 1.25;
         // 弹容量
-        json.ammo_amount = 15;
+        json.ammo_amount = 8;
         return event.setJson(JSON.stringify(json));
     }
 
@@ -122,27 +131,29 @@ TaCZServerEvents.gunDataLoad((event) => {
     if (id === "bf1:obrez_data") {
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 7.5 },
-            { distance: 36, damage: 7 },
-            { distance: 50, damage: 6.5 },
-            { distance: 9999, damage: 6 }
+            { distance: 14, damage: 25.5 },
+            { distance: 36, damage: 25 },
+            { distance: 50, damage: 24.5 },
+            { distance: 9999, damage: 24 }
         ];
         // 射速
-        json.rpm = 275;
+        json.rpm = 150;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.5;
         // 爆头
-        json.bullet.extra_damage.head_shot_multiplier = 2;
+        json.bullet.extra_damage.head_shot_multiplier = 1.5;
         // 弹容量
-        json.ammo_amount = 8;
+        json.ammo_amount = 4;
         return event.setJson(JSON.stringify(json));
     }
 
     if (id === "immersive_armorer:revolver_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:45acp';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 7 },
-            { distance: 36, damage: 6.5 },
+            { distance: 14, damage: 7.6 },
+            { distance: 36, damage: 6.9 },
             { distance: 50, damage: 6 },
             { distance: 9999, damage: 5.5 }
         ];
@@ -158,6 +169,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:standard_rail_pistol_mk4_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 11 },
@@ -272,12 +285,14 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "mpworld:leftdeagle_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:357mag';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 5.5 },
-            { distance: 36, damage: 5 },
-            { distance: 50, damage: 4.5 },
-            { distance: 9999, damage: 4 }
+            { distance: 14, damage: 9.5 },
+            { distance: 36, damage: 9 },
+            { distance: 50, damage: 8.5 },
+            { distance: 9999, damage: 8 }
         ];
         // 射速
         json.rpm = 300;
@@ -310,12 +325,14 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "mpworld:leftdeagle2_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:357mag';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 7 },
-            { distance: 36, damage: 6.5 },
-            { distance: 50, damage: 6 },
-            { distance: 9999, damage: 5.5 }
+            { distance: 14, damage: 11 },
+            { distance: 36, damage: 10.5 },
+            { distance: 50, damage: 9 },
+            { distance: 9999, damage: 8.5 }
         ];
         // 射速
         json.rpm = 300;
@@ -386,12 +403,14 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "create_armorer:pistol_auto_stress_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:9mm';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 4.5 },
-            { distance: 36, damage: 4 },
-            { distance: 50, damage: 3.5 },
-            { distance: 9999, damage: 3 }
+            { distance: 14, damage: 6.5 },
+            { distance: 36, damage: 6 },
+            { distance: 50, damage: 5.5 },
+            { distance: 9999, damage: 5 }
         ];
         // 射速
         json.rpm = 850;
@@ -405,7 +424,9 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "create_armorer:pistol_revolver_torque_data") {
-        // 攻击
+        // 修改使用弹药
+		json.ammo = 'tacz:50ae';
+		// 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15 },
             { distance: 36, damage: 14.5 },
@@ -424,6 +445,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:pistol_9mm_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:45acp';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 6.5 },
@@ -443,6 +466,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:niklas_pistol_semi_union_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 7 },
@@ -462,6 +487,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:niklas_pistol_semi_right_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 7 },
@@ -578,19 +605,19 @@ TaCZServerEvents.gunDataLoad((event) => {
     if (id === "bf1:smg0818_data") {
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 5.5 },
-            { distance: 36, damage: 5 },
-            { distance: 50, damage: 4.5 },
-            { distance: 9999, damage: 4 }
+            { distance: 14, damage: 10.5 },
+            { distance: 36, damage: 10 },
+            { distance: 50, damage: 9.5 },
+            { distance: 9999, damage: 9 }
         ];
         // 射速
-        json.rpm = 770;
+        json.rpm = 650;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.25;
         // 爆头
         json.bullet.extra_damage.head_shot_multiplier = 1.25;
         // 弹容量
-        json.ammo_amount = 70;
+        json.ammo_amount = 25;
         return event.setJson(JSON.stringify(json));
     }
 
@@ -614,11 +641,13 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:smg37_defender_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:45acp';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 8.5 },
-            { distance: 36, damage: 8 },
-            { distance: 50, damage: 7.5 },
+            { distance: 14, damage: 14.5 },
+            { distance: 36, damage: 13 },
+            { distance: 50, damage: 11.5 },
             { distance: 9999, damage: 7 }
         ];
         // 射速
@@ -626,18 +655,18 @@ TaCZServerEvents.gunDataLoad((event) => {
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.15;
         // 爆头
-        json.bullet.extra_damage.head_shot_multiplier = 1.5;
+        json.bullet.extra_damage.head_shot_multiplier = 1.2;
         // 弹容量
-        json.ammo_amount = 45;
+        json.ammo_amount = 30;
         return event.setJson(JSON.stringify(json));
     }
 
     if (id === "mpworld:ls30d_data") {
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 6.5 },
-            { distance: 36, damage: 6 },
-            { distance: 50, damage: 5.5 },
+            { distance: 14, damage: 8.5 },
+            { distance: 36, damage: 7 },
+            { distance: 50, damage: 6.5 },
             { distance: 9999, damage: 5 }
         ];
         // 射速
@@ -1085,10 +1114,14 @@ TaCZServerEvents.gunDataLoad((event) => {
         json.bullet.extra_damage.head_shot_multiplier = 1.1;
         // 弹容量
         json.ammo_amount = 8;
+        // 霰弹数量
+        json.bullet.bullet_amount = 16;
         return event.setJson(JSON.stringify(json));
     }
     //***************步枪****************
     if (id === "helldiver2:ar23_liberator_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:762x39';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 10.5 },
@@ -1144,6 +1177,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:ar23c_liberator_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:762x39';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 16.5 },
@@ -1163,6 +1198,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:assult_rifle_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:762x39';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 14.1 },
@@ -1467,6 +1504,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:ar23p_liberator_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:762x39';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 10.5 },
@@ -1543,6 +1582,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "create_armorer:rifle_assult_crane_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:556x45';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 11.5 },
@@ -1581,6 +1622,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "mpworld:ls45_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:762x39';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 10.5 },
@@ -1639,6 +1682,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     //===============================================中级枪械=========================================
     //***************手枪****************
     if (id === "emxarms:emx_pulse_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 10.5 },
@@ -1772,6 +1817,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:niklas_pistol_double_win_win_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 13.5 },
@@ -1829,6 +1876,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:authorized_gun_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:9mm';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 12.5 },
@@ -1848,6 +1897,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:p19_redeemer_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:45acp';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 10.5 },
@@ -1867,25 +1918,29 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mac100_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 12.5 },
-            { distance: 36, damage: 12 },
-            { distance: 50, damage: 11.5 },
-            { distance: 9999, damage: 11 }
+            { distance: 14, damage: 36.5 },
+            { distance: 36, damage: 34 },
+            { distance: 50, damage: 31.5 },
+            { distance: 9999, damage: 21 }
         ];
         // 射速
-        json.rpm = 700;
+        json.rpm = 400;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.2;
         // 爆头
-        json.bullet.extra_damage.head_shot_multiplier = 1.8;
+        json.bullet.extra_damage.head_shot_multiplier = 1.2;
         // 弹容量
         json.ammo_amount = 12;
         return event.setJson(JSON.stringify(json));
     }
 
     if (id === "emxarms:emx_pulsex2_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -1905,6 +1960,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_kund50_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 13.5 },
@@ -1943,6 +2000,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mac50_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 14.5 },
@@ -1981,6 +2040,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_kund50ex_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 12.5 },
@@ -2000,6 +2061,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************冲锋枪**************
     if (id === "emxarms:emx_expel32se_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 11 },
@@ -2018,6 +2081,8 @@ TaCZServerEvents.gunDataLoad((event) => {
         return event.setJson(JSON.stringify(json));
     }
     if (id === "applied_armorer:niklas_smg_freedom_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 11 },
@@ -2036,6 +2101,8 @@ TaCZServerEvents.gunDataLoad((event) => {
         return event.setJson(JSON.stringify(json));
     }
     if (id === "immersive_armorer:standard_rail_smg_mk1_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 11 },
@@ -2054,6 +2121,8 @@ TaCZServerEvents.gunDataLoad((event) => {
         return event.setJson(JSON.stringify(json));
     }
     if (id === "create_armorer:smg_auto_crank_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:45acp';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 11 },
@@ -2110,6 +2179,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_umx32_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 13.4 },
@@ -2224,6 +2295,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_expel32_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 13.7 },
@@ -2243,15 +2316,17 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************霰弹枪**************
     if (id === "emxarms:emx_enforcer_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_buckshot';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 41.5 },
-            { distance: 36, damage: 41 },
+            { distance: 14, damage: 61.5 },
+            { distance: 36, damage: 55 },
             { distance: 50, damage: 40.5 },
             { distance: 9999, damage: 40 }
         ];
         // 射速
-        json.rpm = 400;
+        json.rpm = 300;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.2;
         // 爆头
@@ -2262,6 +2337,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:moritz_shotgun_sg914_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_buckshot';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 41.5 },
@@ -2281,6 +2358,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:sg225_breaker_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:12g';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 41.5 },
@@ -2300,10 +2379,12 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_scgraves_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_buckshot';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 40.5 },
-            { distance: 36, damage: 40 },
+            { distance: 14, damage: 45.5 },
+            { distance: 36, damage: 45 },
             { distance: 50, damage: 39.5 },
             { distance: 9999, damage: 39 }
         ];
@@ -2410,6 +2491,8 @@ TaCZServerEvents.gunDataLoad((event) => {
         json.bullet.extra_damage.head_shot_multiplier = 1.4;
         // 弹容量
         json.ammo_amount = 3;
+        // 霰弹数量
+        json.bullet.bullet_amount = 16;
         return event.setJson(JSON.stringify(json));
     }
 
@@ -2433,6 +2516,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************步枪****************
     if (id === "emxarms:emx_umx57h_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -2549,8 +2634,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     if (id === "tacz:mk14_data") {
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 16.5 },
-            { distance: 36, damage: 16 },
+            { distance: 14, damage: 21.5 },
+            { distance: 36, damage: 19 },
             { distance: 50, damage: 15.5 },
             { distance: 9999, damage: 15 }
         ];
@@ -2566,6 +2651,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:niklas_lever_vigenere_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 24.5 },
@@ -2585,6 +2672,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mk951l_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 18.5 },
@@ -2680,6 +2769,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mk951r_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 16.8 },
@@ -2699,6 +2790,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_umx57_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -2870,6 +2963,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:moritz_rifle_ar77_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -2908,6 +3003,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_rivet_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 16.8 },
@@ -3022,6 +3119,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "create_armorer:sniper_semi_clockwork_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:338';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 50.5 },
@@ -3117,6 +3216,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:railgun_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 80.5 },
@@ -3155,6 +3256,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:r63_diligence_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:308';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 50.5 },
@@ -3174,6 +3277,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:r63cs_diligence_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:308';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 50.5 },
@@ -3381,6 +3486,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "create_armorer:mg_platemag_flywheel_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:308';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 20.5 },
@@ -3419,6 +3526,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:jar5_dominator_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:308';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 30.5 },
@@ -3530,10 +3639,12 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:r36_eruptor_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:40mm';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 10.5 },
-            { distance: 36, damage: 10 },
+            { distance: 14, damage: 18.5 },
+            { distance: 36, damage: 15 },
             { distance: 50, damage: 9.5 },
             { distance: 9999, damage: 9 }
         ];
@@ -3588,6 +3699,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     //===============================================高级枪械=========================================
     //***************手枪****************
     if (id === "emxarms:emx_pulse_al_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -3607,6 +3720,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_pulse_sc_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -3626,6 +3741,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_kund50ex_al_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 20.5 },
@@ -3645,6 +3762,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_pulse_dl1_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 18.5 },
@@ -3664,6 +3783,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_pulse_dl2_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 17.5 },
@@ -3740,6 +3861,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************冲锋枪**************
     if (id === "emxarms:emx_expel32se_ba_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 16.5 },
@@ -3759,6 +3882,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_umx32_koei_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 15.5 },
@@ -3797,6 +3922,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_expel32_lb_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_pistol';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 20.5 },
@@ -3854,6 +3981,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************霰弹枪**************
     if (id === "emxarms:emx_draftsman_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_buckshot';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 60.5 },
@@ -3873,15 +4002,17 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_draftsman_ev_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_buckshot';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 60.5 },
-            { distance: 36, damage: 60 },
+            { distance: 14, damage: 80.5 },
+            { distance: 36, damage: 70 },
             { distance: 50, damage: 59.5 },
             { distance: 9999, damage: 59 }
         ];
         // 射速
-        json.rpm = 300;
+        json.rpm = 250;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.2;
         // 爆头
@@ -3892,10 +4023,12 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_draftsman_ev1_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_buckshot';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 60.5 },
-            { distance: 36, damage: 60 },
+            { distance: 14, damage: 80.5 },
+            { distance: 36, damage: 70 },
             { distance: 50, damage: 59.5 },
             { distance: 9999, damage: 59 }
         ];
@@ -3911,6 +4044,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "helldiver2:sg225ie_breaker_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:12g';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 60.5 },
@@ -3987,6 +4122,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************步枪****************
     if (id === "emxarms:emx_mk951r_ba_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 30.5 },
@@ -4006,6 +4143,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mk951l_ba_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 28.5 },
@@ -4025,6 +4164,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_rivet_gw_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 30.5 },
@@ -4234,6 +4375,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:moritz_sniper_semi_k30_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 100.5 },
@@ -4272,11 +4415,13 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_pmg90_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 100.5 },
-            { distance: 36, damage: 100 },
-            { distance: 50, damage: 99.5 },
+            { distance: 14, damage: 270.5 },
+            { distance: 36, damage: 260 },
+            { distance: 50, damage: 199.5 },
             { distance: 9999, damage: 99 }
         ];
         // 射速
@@ -4284,19 +4429,21 @@ TaCZServerEvents.gunDataLoad((event) => {
         // 穿透
         json.bullet.extra_damage.armor_ignore = 1;
         // 爆头
-        json.bullet.extra_damage.head_shot_multiplier = 2.5;
+        json.bullet.extra_damage.head_shot_multiplier = 1.5;
         // 弹容量
-        json.ammo_amount = 4;
+        json.ammo_amount = 2;
         return event.setJson(JSON.stringify(json));
     }
 
     if (id === "emxarms:emx_pmg90eos_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 100.5 },
-            { distance: 36, damage: 100 },
-            { distance: 50, damage: 99.5 },
-            { distance: 9999, damage: 99 }
+            { distance: 14, damage: 330.5 },
+            { distance: 36, damage: 320 },
+            { distance: 50, damage: 299.5 },
+            { distance: 9999, damage: 199 }
         ];
         // 射速
         json.rpm = 200;
@@ -4310,10 +4457,12 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mk88_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 100.5 },
-            { distance: 36, damage: 100 },
+            { distance: 14, damage: 120.5 },
+            { distance: 36, damage: 110 },
             { distance: 50, damage: 99.5 },
             { distance: 9999, damage: 99 }
         ];
@@ -4367,6 +4516,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mg57_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_rifle';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 35.5 },
@@ -4386,6 +4537,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mk951lmg_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 45.5 },
@@ -4405,15 +4558,17 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mg90_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 55.5 },
-            { distance: 36, damage: 55 },
-            { distance: 50, damage: 54.5 },
+            { distance: 24, damage: 75.5 },
+            { distance: 36, damage: 70 },
+            { distance: 50, damage: 64.5 },
             { distance: 9999, damage: 54 }
         ];
         // 射速
-        json.rpm = 800;
+        json.rpm = 600;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.3;
         // 爆头
@@ -4443,6 +4598,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:moritz_gernade_gl3_data") {
+        // 修改使用弹药
+		json.ammo = 'tacz:40mm';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 60.5 },
@@ -4485,6 +4642,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "immersive_armorer:chemical_thrower_data") {
+        // 修改使用弹药
+		json.ammo = 'bf1:fuel';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 30.5 },
@@ -4601,6 +4760,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
     //***************机枪****************
     if (id === "applied_armorer:moritz_mg_emg_prototype_data") {
+        // 修改使用弹药
+		json.ammo = 'trisdyna:emx_b3';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 65.5 },
@@ -4620,6 +4781,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "applied_armorer:moritz_mg_hmg22_data") {
+        // 修改使用弹药
+		json.ammo = 'trisdyna:emx_b3';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 60.5 },
@@ -4696,6 +4859,8 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_mg57_yh_data") {
+        // 修改使用弹药
+		json.ammo = 'cyber_armorer:bullet_sniper';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
             { distance: 14, damage: 55.5 },
@@ -4734,19 +4899,21 @@ TaCZServerEvents.gunDataLoad((event) => {
     }
 
     if (id === "emxarms:emx_sf7b_data") {
+        // 修改使用弹药
+		json.ammo = 'mryh:exammo';
         // 攻击
         json.bullet.extra_damage.damage_adjust = [
-            { distance: 14, damage: 50.5 },
-            { distance: 36, damage: 50 },
-            { distance: 50, damage: 49.5 },
-            { distance: 9999, damage: 49 }
+            { distance: 14, damage: 90.5 },
+            { distance: 36, damage: 90 },
+            { distance: 50, damage: 81.5 },
+            { distance: 9999, damage: 69 }
         ];
         // 射速
-        json.rpm = 800;
+        //json.rpm = 800;
         // 穿透
         json.bullet.extra_damage.armor_ignore = 0.5;
         // 爆头
-        json.bullet.extra_damage.head_shot_multiplier = 2.5;
+        json.bullet.extra_damage.head_shot_multiplier = 1.5;
         // 弹容量
         json.ammo_amount = 180;
         return event.setJson(JSON.stringify(json));
