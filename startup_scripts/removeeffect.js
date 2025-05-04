@@ -25,7 +25,7 @@ StartupEvents.registry("item", event => {
         .food(food => {
             food.alwaysEdible() //设置为无需消耗饱食度即可使用
             food.eaten(rebuff => {
-                rebuff.player.potionEffects.add("zombie_extreme:radiation_protection",)
+                rebuff.player.potionEffects.add("zombie_extreme:radiation_protection",6000,0)
             })
         })
     event.create("mryh:detoxicity")
