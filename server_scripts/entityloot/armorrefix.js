@@ -1,3 +1,4 @@
+
 ServerEvents.entityLootTables(event => {
 
     event.modifyEntity("zombie_extreme:zero_patient", Loot => {
@@ -58,4 +59,8 @@ LootJS.modifiers(e => {
         .addLoot("minecraft:porkchop")
     e.addLootTypeModifier(LootType.CHEST)
         .removeLoot("touhou_little_maid:power_point")
+    e.addLootTypeModifier(LootType.ENTITY)
+        .anyDimension("lostcities:lostcity")
+        .randomChance(0.1)
+        .addLoot('minecraft:dragon_breath')
 })
