@@ -314,6 +314,36 @@ const hordeSpawnStructure = [
     "mvs:well/wells/nether_well"
 ]
 
+let $ChunkPos = Java.loadClass("net.minecraft.world.level.ChunkPos")
+/**
+ * @param {Internal.Player} Y$player
+ * @returns 
+ */
+function checkStructure(Y$player) {
+    let Y$serverLevel = Y$player.level
+    let Y$playerPos = Y$player.block.pos
+    /** @type {Internal.Structure[]} */
+    let Y$structureArray = Y$serverLevel.structureManager().getAllStructuresAt(Y$playerPos).keySet().toArray()
+    let Y$structureRegistry = Y$serverLevel.registryAccess().registryOrThrow($Registries.STRUCTURE)
+    for (let Y$structure of Y$structureArray) {
+        let Y$structureStart =
+            Y$serverLevel.structureManager().getStructureAt(Y$playerPos, Y$structure)
+        if (Y$structureStart.isValid()) {
+            if (hordeSpawnStructure.indexOf(Y$structureRegistry.getKey(Y$structure).toString()) > -1) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+// Y:测试用的,可以删除
+// ItemEvents.tooltip(event => {
+// ItemEvents.firstLeftClicked(event => {
+//     event.player.tell(checkStructure(event.player) ? "true" : "false")
+// })
+
+
 // 冷却时间，单位为游戏刻（10分钟）
 const cooldownTime = 10 * 60 * 20;
 // 触发尸潮的随机概率（例如1/100）
@@ -322,28 +352,23 @@ const hordeSpawnChance = 100 / 100;
 // 检测玩家是否进入特定结构
 PlayerEvents.tick(e => {
     let player = e.player;
+
+    // Y:每秒执行一次 之前执行的太多了罢!
+    if (player.age % 20 != 0) return;
+
     let level = player.level;
     let pos = player.blockPosition();
     let playerData = player.persistentData;
     let currentTime = level.dayTime();
 
-    // 初始化 isInStructure 为 false
-    let isInStructure = false;
-
-    // 遍历所有可能触发尸潮的结构
-    hordeSpawnStructure.forEach(structureName => {
-        // 检查玩家是否在当前结构内
-        if (simpleCheckPosInStructure(level, pos, structureName)) {
-            isInStructure = true;
-        }
-    });
-
     // 增加玩家上次尸潮时间的nbt
     let lastTriggerTime = playerData.getInt("mryh:lastHordeTriggerTime"); // 如果没有则默认为0
 
-    if (isInStructure) {
-        // 检查是否超过冷却时间
-        if (currentTime - lastTriggerTime >= cooldownTime) {
+    // 检查是否超过冷却时间
+    // Y:将存粹的数字运算前置，应该能优化点
+    if (currentTime - lastTriggerTime >= cooldownTime) {
+        // Y:修改结构检测,减少不必要的计算
+        if (checkStructure(player)) {
             // 随机概率触发尸潮
             if (Math.random() < hordeSpawnChance) {
                 // 更新玩家的触发时间
