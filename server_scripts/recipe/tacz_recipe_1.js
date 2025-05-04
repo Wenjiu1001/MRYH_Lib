@@ -159,7 +159,7 @@ ServerEvents.recipes(e => {
         { item: { item: 'minecraft:iron_ingot' }, count: 20 },
         { item: { item: 'minecraft:gold_ingot' }, count: 20 },
         { item: { item: 'minecraft:copper_ingot' }, count: 20 },
-        { item: { item: 'minecraft:diamond' }, count: 5 } 
+        { item: { item: 'minecraft:diamond' }, count: 5 }
     ], 'gun');
 });
 
@@ -639,4 +639,23 @@ ServerEvents.recipes(e => {
     generateRecipes(ultimateSnipers, ultimateSniperMaterials);
     generateRecipes(ultimateMGs, ultimateMGMaterials);
     generateRecipes(ultimateHeavy, ultimateHeavyMaterials);
+
+    // 删除配方
+    e.remove({ id: 'mpworld:attachments/knife2' })
+    e.remove({ id: 'mpworld:attachments/knife' })
+    e.remove({ id: 'emxarms:ammo/339x57fmj' })
+    e.remove({ id: 'emxarms:ammo/339x57x' })
+    e.remove({ id: 'emxarms:ammo/339x57' })
+    e.remove({ id: 'emxarms:ammo/402x31rip' })
+    e.remove({ id: 'emxarms:ammo/1045x103belt' })
+    e.remove({ id: 'emxarms:ammo/410x57ap' })
+    e.remove({ id: 'emxarms:ammo/x16sg' })
+    e.remove({ id: 'emxarms:ammo/emx_tediore' })
+    e.remove({ id: 'emxarms:ammo/402x31fmj' })
+    e.remove({ id: 'emxarms:ammo/402x31' })
+    e.remove({ id: 'emxarms:ammo/1045x103' })
+    e.remove({ id: 'emxarms:ammo/x16he' })
+    e.remove({ id: 'emxarms:ammo/emx_rem' })
+    e.remove({ id: 'bc:gun/muxing_s2' })
+    e.remove({ id: 'mpworld:gun/wth' })
 });
