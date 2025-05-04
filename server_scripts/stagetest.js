@@ -1,40 +1,10 @@
 
-
-
 // 指令创建
 ServerEvents.commandRegistry(event => {
-    const { commands: Commands, arguments: Arguments } = event;
+    let { commands: Commands, arguments: Arguments } = event;
     event.register(
         Commands.literal('mryh')
             .requires(src => src.hasPermission(2)) // 确保命令执行者具有足够的权限
-            .then(Commands.literal('stages')
-                .then(Commands.argument('player', Arguments.PLAYER.create(event))
-                    .then(Commands.argument('arg1', Arguments.NBT_COMPOUND.create(event))
-                        .executes(ctx => {
-                            let nbtCompound = Arguments.NBT_COMPOUND.getResult(ctx, 'arg1');
-                            let player = ctx.source.server.getPlayer(Arguments.PLAYER.getResult(ctx, 'player'));
-                            let addStages = nbtCompound.addStages;
-                            let removeStages = nbtCompound.removeStages;
-
-                            // 清除所有现有阶段
-                            player.stages.clear();
-
-                            if (addStages) {
-                                for (let i = 0; i < addStages.length; i++) {
-                                    player.stages.add(addStages[i]);
-                                }
-                            }
-                            if (removeStages) {
-                                for (let i = 0; i < removeStages.length; i++) {
-                                    player.stages.remove(removeStages[i]);
-                                }
-                            }
-                            ctx.source.player.tell(`已为玩家 ${player.name} 更新阶段。`);
-                            return 1;
-                        })
-                    )
-                )
-            )
             .then(Commands.literal('query')
                 .then(Commands.argument('player', Arguments.PLAYER.create(event))
                     .executes(ctx => {
@@ -83,19 +53,17 @@ ServerEvents.commandRegistry(event => {
 
 // 属性变化数组
 let difficultLevelDef = [
-    { healthMulti: 1, attackMulti: 1, armorMulti: 1, toughnessMulti: 1 },
-    { healthMulti: 1.2, attackMulti: 1, armorMulti: 1, toughnessMulti: 1 },
-    { healthMulti: 1.4, attackMulti: 1, armorMulti: 1, toughnessMulti: 1 },
-    { healthMulti: 1.6, attackMulti: 1.2, armorMulti: 1, toughnessMulti: 1 },
-    { healthMulti: 1.8, attackMulti: 1.2, armorMulti: 1, toughnessMulti: 1 },
-    { healthMulti: 2, attackMulti: 1.5, armorMulti: 1.2, toughnessMulti: 1.2 },
-    { healthMulti: 2.5, attackMulti: 1.5, armorMulti: 1.2, toughnessMulti: 1.2 },
-    { healthMulti: 3, attackMulti: 2, armorMulti: 1.5, toughnessMulti: 1.5 },
-    { healthMulti: 4, attackMulti: 2.5, armorMulti: 1.5, toughnessMulti: 1.5 },
-    { healthMulti: 5, attackMulti: 3, armorMulti: 2, toughnessMulti: 2 },
-    { healthMulti: 8, attackMulti: 3.5, armorMulti: 2.5, toughnessMulti: 2.5 },
-    { healthMulti: 10, attackMulti: 4, armorMulti: 3, toughnessMulti: 3 }
+    { healthMulti: 0.5, attackMulti: 1.0, armorMulti: 1.0, speedMulti: 0.8 },// 求生
+    { healthMulti: 1.0, attackMulti: 1.0, armorMulti: 1.0, speedMulti: 1.0 },// 末世
+    { healthMulti: 2.0, attackMulti: 1.5, armorMulti: 2.0, speedMulti: 1.2 },// 绝境
+    { healthMulti: 3.0, attackMulti: 2.0, armorMulti: 2.0, speedMulti: 1.5 } // 湮灭
 ];
+// 原版难度
+let difficultlevelMC = [
+    { healthMulti: 0.5, attackMulti: 1.0, armorMulti: 1.0, speedMulti: 0.8 },// 简单
+    { healthMulti: 1.0, attackMulti: 1.0, armorMulti: 1.0, speedMulti: 1.0 },// 普通
+    { healthMulti: 3.0, attackMulti: 2.0, armorMulti: 2.0, speedMulti: 1.5 } // 困难
+]
 
 // 实体生成逻辑
 EntityEvents.spawned(e => {
@@ -117,20 +85,21 @@ EntityEvents.spawned(e => {
     let diffLevelNum = diffStage.match('difficult_level_(\\d+)')[1]
     let diffLevel = difficultLevelDef[diffLevelNum - 1]
     entity.persistentData.putInt('diffLevel', diffLevelNum)
+    let diffLevelMC = difficultlevelMC[e.level.difficulty.id - 1]
     let dayeffect = 1 + day / 100 * 2
     let randomfactor = 0.8 + (1.3 - 0.8) * Math.random()
     let fixedEffect = dayeffect * randomfactor
     if (diffLevel.healthMulti != 0 && entity.attributes.hasAttribute('minecraft:generic.max_health')) {
-        entity.setAttributeBaseValue('minecraft:generic.max_health', entity.getAttribute('minecraft:generic.max_health').getValue() * diffLevel.healthMulti * fixedEffect)
+        entity.setAttributeBaseValue('minecraft:generic.max_health', entity.getAttribute('minecraft:generic.max_health').getValue() * diffLevel.healthMulti * diffLevelMC.healthMulti * fixedEffect)
         entity.setHealth(entity.getMaxHealth())
     }
     if (diffLevel.attackMulti != 0 && entity.attributes.hasAttribute('minecraft:generic.attack_damage')) {
-        entity.setAttributeBaseValue('minecraft:generic.attack_damage', entity.getAttribute('minecraft:generic.attack_damage').getValue() * diffLevel.attackMulti * fixedEffect)
+        entity.setAttributeBaseValue('minecraft:generic.attack_damage', entity.getAttribute('minecraft:generic.attack_damage').getValue() * diffLevel.attackMulti * diffLevelMC.attackMulti * fixedEffect)
     }
     if (diffLevel.armorMulti != 0 && entity.attributes.hasAttribute('minecraft:generic.armor')) {
-        entity.setAttributeBaseValue('minecraft:generic.armor', entity.getAttribute('minecraft:generic.armor').getValue() * diffLevel.armorMulti * fixedEffect)
+        entity.setAttributeBaseValue('minecraft:generic.armor', entity.getAttribute('minecraft:generic.armor').getValue() * diffLevel.armorMulti * diffLevelMC.armorMulti * fixedEffect)
     }
-    if (diffLevel.toughnessMulti != 0 && entity.attributes.hasAttribute('minecraft:generic.armor_toughness')) {
-        entity.setAttributeBaseValue('minecraft:generic.armor_toughness', entity.getAttribute('minecraft:generic.armor_toughness').getValue() * diffLevel.toughnessMulti * fixedEffect)
+    if (diffLevel.toughnessMulti != 0 && entity.attributes.hasAttribute('minecraft:generic.movement_speed')) {
+        entity.setAttributeBaseValue('minecraft:generic.movement_speed', entity.getAttribute('minecraft:generic.movement_speed').getValue() * diffLevel.toughnessMulti * diffLevelMC.speedMulti * fixedEffect)
     }
 })
