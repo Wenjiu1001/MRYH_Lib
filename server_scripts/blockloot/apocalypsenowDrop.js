@@ -201,20 +201,33 @@ function militaryairdropluck02(militaryairdroplootPool) {
     return militaryairdroplootPool[militaryairdroprandom];
 }
 
-// 应用LootJS修改器
 LootJS.modifiers((event) => {
-    event.addBlockLootModifier("apocalypsenow:blocks/militaryairdrop")
+    event.addLootTableModifier("apocalypsenow:blocks/militaryairdrop")
         .removeLoot(Ingredient.all)
-        .randomChance(0.8)
+        .randomChance(1)
         .apply((context) => {
-            let luck = context.getLuck();
-            let militaryairdroploot = militaryairdropluck01(luck);
-            let militaryairdroprandomLoot = militaryairdropluck02(militaryairdroploot);
-            if (militaryairdroprandomLoot != null) {
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(10, 30)))
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(10, 30)))
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(30, 50)))
-                context.addLoot(LootEntry.of(militaryairdroprandomLoot, 1).withChance(getRandomChance(0.1, 0.7)).enchantWithLevels(getRandomNumber(30, 50)))
+            let player = context.getPlayer();
+            if (!player) return;
+
+            let luck = player.getLuck();
+            let lootPool = militaryairdropluck01(luck); // 获取战利品池
+            
+            // 如果池为空则退出
+            if (!lootPool || lootPool.length === 0) return;
+
+            // 生成四次独立随机选择
+            for (let i = 0; i < 4; i++) {
+                // 每次循环都重新执行随机选取
+                let randomItem = militaryairdropluck02(lootPool);
+                
+                if (randomItem) {
+                    // 根据索引决定附魔等级范围
+                    let [min, max] = i < 2 ? [10, 30] : [30, 50];
+                    context.addLoot(
+                        LootEntry.of(randomItem, 1)
+                            .enchantWithLevels(getRandomNumber(min, max))
+                    );
+                }
             }
         });
 });
