@@ -1,3 +1,4 @@
+
 StartupEvents.registry("item",event=>{
     event.create("jiuhu:now_01")
         .food(foodBuilder=>{
@@ -47,7 +48,7 @@ StartupEvents.registry("item",event=>{
                     player.give('6x minecraft:melon_slice')
                     player.give('scalinghealth:heart_crystal')
                     player.give('sophisticatedbackpacks:copper_backpack')
-                    player.give(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:30,GunFireMode:"AUTO",GunId:"tacz:ak47",HasBulletInBarrel:1b}'))
+                    player.give(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:30,GunFireMode:"AUTO",GunId:"tacz:type_81",HasBulletInBarrel:1b}'))
                     player.give(Item.of('tacz:ammo', 480, '{AmmoId:"tacz:762x39"}'))
                     player.give('apocalypsenow:u_sarmy_helmet')
                     player.give('apocalypsenow:u_sarmy_chestplate')
@@ -165,8 +166,8 @@ StartupEvents.registry("item",event=>{
                  */
                 let player = foodEaten.getPlayer()
                 if (player != null){
-                    player.give(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:19,GunFireMode:"AUTO",GunId:"tacz:vector45",HasBulletInBarrel:1b}'))
-                    player.give(Item.of('tacz:ammo_box', 2,'{AmmoCount:360,AmmoId:"tacz:45acp",Level:1}'))
+                    player.give(Item.of('tacz:modern_kinetic_gun', '{GunCurrentAmmoCount:10,GunFireMode:"SEMI",GunId:"tacz:m1911",HasBulletInBarrel:1b}'))
+                    player.give(Item.of('tacz:ammo_box', 1,'{AmmoCount:360,AmmoId:"tacz:45acp",Level:1}'))
                     player.give('2x scalinghealth:heart_crystal')
                     player.give('zombie_extreme:magnetic_card')
                     player.give('zombie_extreme:black_ops_magnetic_card')
