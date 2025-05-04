@@ -156,9 +156,9 @@ ServerEvents.recipes(event => {
             D: 'apocalypsenow:kevlar'
         })
     //删除祛魔编辑台
+    /*
     event.remove({ output: 'editenchanting:enchantment_edit_table' })
-    //删除转化桌
-    event.remove({ mod: 'projecte' })
+    */
     //添加钱块分解
     event.remove({ output: 'apocalypsenow:money' })
     event.shaped(Item.of('apocalypsenow:money', 9), [
@@ -211,39 +211,89 @@ ServerEvents.recipes(event => {
         'zombiekit:rake',
         'minecraft:netherite_ingot'
     ).template('minecraft:netherite_scrap')
-
     // 终结维度装甲板
-    event.recipes.create.mechanical_crafting('mryh:terminus_dimension_armor_plate',
-        [
-            ' PKQ ',
-            'OCDER',
-            'JBAFL',
-            'NIHGS',
-            ' TMU '
-        ],
+    event.custom(
         {
-            A: 'minecraft:nether_star',
-            B: 'zombiekit:special_steel_sheet',
-            C: 'k_turrets:titanium_ingot',
-            D: 'max_armory:lamellar_armor_piece',
-            E: 'immersiveengineering:plate_duroplast',
-            F: 'zombie_extreme:ignot_titan',
-            G: 'marbledsarsenal:armor_plate',
-            H: 'apocalypsenow:reinforced_armor_plate',
-            I: 'spore:armor_plate',
-            J: 'createaddition:electrum_wire',
-            K: 'marbledsarsenal:rubber',
-            L: 'zombie_extreme:circuit_diagram',
-            M: 'zombie_extreme:fulguria_fuel_rod',
-            N: 'spore:living_core',
-            O: 'spore:fleshy_claw',
-            P: 'spore:hardened_bind',
-            Q: 'spore:mutated_heart',
-            R: 'spore:r_wing',
-            S: 'spore:plated_muscle',
-            T: 'spore:corrosive_sack',
-            U: 'spore:spine'
-        })
+            "type": "create:mechanical_crafting",
+            "acceptMirrored": false,
+            "pattern": [
+                " PKQ ",
+                "OCDER",
+                "JBAFL",
+                "NIHGS",
+                " TMU "
+            ],
+            "result": {
+                "item": "mryh:terminus_dimension_armor_plate",
+                "count": 1
+            },
+            "key": {
+                "A": {
+                    "item": "minecraft:nether_star"
+                },
+                "B": {
+                    "item": "zombiekit:special_steel_sheet"
+                },
+                "C": {
+                    "item": "k_turrets:titanium_ingot"
+                },
+                "D": {
+                    "item": "max_armory:lamellar_armor_piece"
+                },
+                "E": {
+                    "item": "immersiveengineering:plate_duroplast"
+                },
+                "F": {
+                    "item": "zombie_extreme:ignot_titan"
+                },
+                "G": {
+                    "item": "marbledsarsenal:armor_plate"
+                },
+                "H": {
+                    "item": "apocalypsenow:reinforced_armor_plate"
+                },
+                "I": {
+                    "item": "spore:armor_plate"
+                },
+                "J": {
+                    "item": "createaddition:electrum_wire"
+                },
+                "K": {
+                    "tag": "forge:rubber"
+                },
+                "L": {
+                    "item": "zombie_extreme:circuit_diagram"
+                },
+                "M": {
+                    "item": "zombie_extreme:fulguria_fuel_rod"
+                },
+                "N": {
+                    "item": "spore:living_core"
+                },
+                "O": {
+                    "item": "spore:fleshy_claw"
+                },
+                "P": {
+                    "item": "spore:hardened_bind"
+                },
+                "Q": {
+                    "item": "spore:mutated_heart"
+                },
+                "R": {
+                    "item": "spore:r_wing"
+                },
+                "S": {
+                    "item": "spore:plated_muscle"
+                },
+                "T": {
+                    "item": "spore:corrosive_sack"
+                },
+                "U": {
+                    "item": "spore:spine"
+                }
+            }
+        }
+    )
     // 反击维度装甲板
     event.recipes.create.mechanical_crafting('mryh:retaliation_dimension_armor_plate',
         [
@@ -269,29 +319,64 @@ ServerEvents.recipes(event => {
             M: 'zombie_extreme:ignot_bronze'
         })
     // 联合维度装甲板
-    event.recipes.create.mechanical_crafting('mryh:unified_dimension_armor_plate',
-        [
-            ' KKK ',
-            'JCDEL',
-            'JBAFL',
-            'JIHGL',
-            ' MMM '
-        ],
+    event.custom(
         {
-            A: 'minecraft:netherite_ingot',
-            B: 'minecraft:scute',
-            C: 'zombiekit:energy_rod',
-            D: 'zombiekit:bulletproof_insert',
-            E: 'k_turrets:titanium_ingot',
-            F: 'max_armory:chain_armor_piece',
-            G: 'immersiveengineering:plate_steel',
-            H: 'zombie_extreme:ruby',
-            I: 'zombie_extreme:bronze_wire',
-            J: 'zombie_extreme:uranium_rod',
-            K: 'marbledsarsenal:rubber',
-            L: 'marbledsarsenal:armor_plate',
-            M: 'apocalypsenow:armorplate'
-        })
+            "type": "create:mechanical_crafting",
+            "acceptMirrored": false,
+            "pattern": [
+                " KKK ",
+                "JCDEL",
+                "JBAFL",
+                "JIHGL",
+                " MMM "
+            ],
+            "result": {
+                "item": "mryh:unified_dimension_armor_plate",
+                "count": 1
+            },
+            "key": {
+                "A": {
+                    "item": "minecraft:netherite_ingot"
+                },
+                "B": {
+                    "item": "minecraft:scute"
+                },
+                "C": {
+                    "item": "zombiekit:energy_rod"
+                },
+                "D": {
+                    "item": "zombiekit:bulletproof_insert"
+                },
+                "E": {
+                    "item": "k_turrets:titanium_ingot"
+                },
+                "F": {
+                    "item": "max_armory:chain_armor_piece"
+                },
+                "G": {
+                    "item": "immersiveengineering:plate_steel"
+                },
+                "H": {
+                    "item": "zombie_extreme:ruby"
+                },
+                "I": {
+                    "item": "zombie_extreme:bronze_wire"
+                },
+                "J": {
+                    "item": "zombie_extreme:uranium_rod"
+                },
+                "K": {
+                    "tag": "forge:rubber"
+                },
+                "L": {
+                    "item": "marbledsarsenal:armor_plate"
+                },
+                "M": {
+                    "item": "apocalypsenow:armorplate"
+                }
+            }
+        }
+    )
     // 防卫维度装甲板
     event.recipes.create.mechanical_crafting('mryh:defense_dimension_armor_plate',
         [
@@ -508,6 +593,33 @@ ServerEvents.recipes(event => {
             D: 'zombie_extreme:ignotlead'
         })
     // 删除女仆祭坛
-    event.remove({id:'touhou_little_maid:altar/spawn_box'})
+    event.remove({ id: 'touhou_little_maid:altar/spawn_box' })
+    // 删除武器库的橡胶
+    event.remove({ output: 'marbledsapi:rubber' })
+    // 永恒牛排
+    event.recipes.minecraft.smelting('artifacts:eternal_steak',
+        'artifacts:everlasting_beef',
+        2,
+        100
+    )
+    // 腐肉环球
+    event.recipes.kubejs.shapeless(
+        Item.of('apocalypsenow:money',),
+        [
+            Item.of('minecraft:rotten_flesh', 7)
+        ]
+    )
+    // 铁农场
+    event.remove({id:"easy_villagers:iron_farm"})
+    event.shaped(Item.of('easy_villagers:iron_farm', 1), [
+        'DDD',
+        'DAD',
+        'CBC'
+    ],
+        {
+            A: 'minecraft:lava_bucket',
+            B: 'mryh:medium_permession',
+            C: 'minecraft:diamond_block',
+            D: 'securitycraft:reinforced_glass_pane'
+        })
 })
-
