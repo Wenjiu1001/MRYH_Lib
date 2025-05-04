@@ -1,3 +1,4 @@
+
 // 定义随机数生成函数
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -895,7 +896,6 @@ function getRandomGun() {
         "mpworld:leftdeagle2",
         "tacz:m1911",
         "bf1:kolibri",
-        "bf1:syringe",
         "bf1:handgun",
         "create_armorer:pistol_auto_stress",
         "create_armorer:pistol_revolver_torque",
@@ -1432,54 +1432,24 @@ function getRandomAmmo() {
 function getRandomAmmoMod() {
     let lootPooltaczammo2 = [
         "mpworld:545x39",
-        "helldiver2:rifle_normal",
         "cyber_armorer:bullet_sniper_smart",
-        "mpworld:545x39wg",
         "cyber_armorer:bullet_rifle_smart",
-        "emxarms:339x57fmj",
-        "immersive_armorer:chemical",
         "bc:pg9",
-        "applied_armorer:hard_core_quartz_bullet",
         "dawnhunting:b1",
         "dawnhunting:45acp",
         "cyber_armorer:bullet_pistol_smart",
-        "immersive_armorer:high_power_capacitor",
-        "emxarms:402x31fmj",
-        "applied_armorer:etched_quartz_bullet",
-        "emxarms:1045x103belt",
-        "bf1:medkit",
-        "mpworld:357wg",
-        "immersive_armorer:burst_capacitor",
-        "mpworld:22mm",
-        "immersive_armorer:454_casul",
-        "helldiver2:rifle_ap",
-        "emxarms:402x31rip",
         "bc:145114",
         "applied_armorer:cluster_quartz_bullet",
-        "emxarms:x16he",
         "bluearchive:ammog11toki",
-        "trisdyna:tris_core",
         "mpworld:545x39",
-        "create_armorer:rbapb",
-        "emxarms:339x57x",
-        "applied_armorer:fluix_battery",
-        "mpworld:copper",
-        "create_armorer:gas_pistol_ammo",
-        "emxarms:339x57",
         "bc:tanta",
-        "immersive_armorer:ap_ammo",
-        "emxarms:x16sg",
-        "helldiver2:explode_ap",
         "cyber_armorer:bullet_buckshot",
         "cyber_armorer:bullet_sniper",
         "trisdyna:emx_b2",
         "trisdyna:emx_b3",
-        "emxarms:1045x103",
         "create_armorer:slap",
-        "helldiver2:pistol_normal",
         "bc:2bore",
         "bc:127108",
-        "applied_armorer:fluix_infused_grenade",
         "cyber_armorer:bullet_rifle",
         "trisdyna:emx_b1",
         "bf1:fuel"
@@ -1490,30 +1460,18 @@ function getRandomAmmoMod() {
 // ## 定义特殊类型ammo的获取函数
 function getRandomAmmospec() {
     let lootPooltaczammo2 = [
-        "emxarms:x16sg",
-        "helldiver2:explode_ap",
         "cyber_armorer:bullet_buckshot",
         "cyber_armorer:bullet_sniper",
         "trisdyna:emx_b2",
         "trisdyna:emx_b3",
-        "emxarms:1045x103",
         "create_armorer:slap",
-        "helldiver2:pistol_normal",
         "bc:2bore",
         "bc:127108",
-        "applied_armorer:fluix_infused_grenade",
         "cyber_armorer:bullet_rifle",
         "trisdyna:emx_b1",
         "bf1:fuel",
         "create_armorer:melee_weapon",
-        "bc:tanta_s",
-        "applied_armorer:melee",
-        "cyber_armorer:melee",
-        "mpworld:iron",
-        "mpworld:gold_ore",
-        "mpworld:copper_ore",
-        "mpworld:gold",
-        "mpworld:iron_ore"
+        "bc:tanta_s"
     ];
     return lootPooltaczammo2[Math.floor(Math.random() * lootPooltaczammo2.length)];
 }
@@ -1642,7 +1600,7 @@ LootJS.modifiers((event) => {
             );
             context.addLoot(
                 LootEntry.of('tacz:ammo', getRandomNumber(5, 20), { AmmoId: getRandomAmmoMod() })
-                    .withChance(getRandomChance(0.1, 0.7))
+                    .withChance(getRandomChance(0.1, 0.4))
                     .when((c) => c.randomChance(0.3))
             );
             context.addLoot(
